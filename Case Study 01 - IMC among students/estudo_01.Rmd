@@ -1,6 +1,6 @@
 ---
 title: 'Case Study 01: This is a template'
-author: "Hernane Braga and Author 2"
+author: "Hernane Braga and Lucas and Vinicius"
 date: "January 17, 2021"
 output:
   pdf_document:
