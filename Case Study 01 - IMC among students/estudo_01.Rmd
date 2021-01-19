@@ -1,7 +1,7 @@
 ---
 title: 'Case Study 01: This is a template'
 author: "Hernane Braga and Lucas and Vinicius"
-date: "January 17, 2021"
+date: "January 19, 2021"
 output:
   pdf_document:
     fig_caption: yes
@@ -16,8 +16,20 @@ There are (at least) two ways to render this document to **pdf** in R: one easy 
 
 
 ## Experimental design
+
+### First Experiment
 A section detailing the experimental setup. This is the place where you will define your test hypotheses, e.g.:
 $$\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}$$
+
+### Second Experiment
+A section detailing the experimental setup. This is the place where you will define your test hypotheses, e.g.:
+$$\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}$$
+
+### Third Experiment
+A section detailing the experimental setup. This is the place where you will define your test hypotheses, e.g.:
+$$\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}$$
+
+
 
 including the reasons behind your choices of the value for $H_0$ and the directionality (or not) of $H_1$. 
 
@@ -26,24 +38,58 @@ This is also the place where you should discuss (whenever necessary) your defini
 ### Description of the data collection
 The data was split in two datasets, the first containing data from students from 2016 class and the other from 2017.It was necessary clean data for getting the variables of weigth and heigth from PPGE students.
 
-## Exploratory Data Analysis
+#### First experiment dataset
+- Only man 
+
 The first step is to load and preprocess the data. For instance,
 ```{r loaddata}
-Ãdata(mtcars)
-fc<-c(2,8:11)
-for (i in 1:length(fc)){mtcars[,fc[i]]<-as.factor(mtcars[,fc[i]])}
-levels(mtcars$am) <- c("Automatic","Manual")
+# Loading dataset
+dataset_2016 <- read.csv('data/imc_20162.csv', sep=',')
+dataset_2017 <- read.csv('data/CS01_20172.csv', sep=';')
+
+
+# Renaming columns
+names(dataset_2017)[names(dataset_2017) == "Sex"] <- "Gender"
+names(dataset_2017)[names(dataset_2017) == "height.m"] <- "Height.m"
+
+
+# Selecting variables
+model_var <- c("Height.m", "Weight.kg", "IMC")
+
+
+# Calculating IMC
+dataset_2016[,'IMC'] = dataset_2016[,'Weight.kg'] / (dataset_2016[,'Height.m'])^2
+dataset_2017[,'IMC'] = dataset_2017[,'Weight.kg'] / (dataset_2017[,'Height.m'])^2
+
+
+# Selecting PPGEE students
+PPGEE_2016students <- dataset_2016[which(dataset_2016$Course == 'PPGEE'), ]
+
+
+# Male students
+male_students2016 <- PPGEE_2016students[which(PPGEE_2016students$Gender == 'M'), ]
+male_students2017 <- dataset_2017[which(dataset_2017$Gender == 'M'), ]
+
+
+# Female students
+female_students2016 <- PPGEE_2016students[which(PPGEE_2016students$Gender == 'F'), ]
+female_students2017 <- dataset_2017[which(dataset_2017$Gender == 'F'), ]
+
+
+# Experiment dataset - Male x Female IMC
+male_students <- rbind(male_students2016[model_var], male_students2017[model_var])
+female_students <- rbind(female_students2016[model_var], female_students2017[model_var])
+
 ```
+
+
+
+## Exploratory Data Analysis
+The first step is to load and preprocess the data. For instance,
+
 
 To get an initial feel for the relationships between the relevant variables of your experiment it is frequently interesting to perform some preliminary (exploratory) analysis. This is frequently referred to as _getting a feel_ of your data, and can suggest procedures (such as outlier investigation or data transformations) to experienced experimenters.
 
-```{r pairs,fig.width=8,echo=TRUE,message=FALSE,fig.cap="Exploring the effect of car transmission on mpg values"}
-library(GGally,quietly = T, warn.conflicts = F) # This is just me getting fancy.
-                                                # There are much simpler ways ;-)
-ggpairs(data=mtcars,columns=c(1,9),title="MPG by transmission type",
-        upper=list(combo="box"),lower=list(combo="facethist"),
-        diag=list(continuous="densityDiag",discrete="barDiag"))
-```
 
 Your preliminary analysis should be described together with the plots. In this example, two facts are immediately clear from the plots: first, **mpg** tends to correlate well with many of the other variables, most intensely with **drat** (positively) and **wt** (negatively). It is also clear that many of the variables are highly correlated (e.g., **wt** and **disp**). Second, it seems like manual transmission models present larger values of **mpg** than the automatic ones. In the next section a linear model will be fit to the data in order to investigate the significance and magnitude of this possible effect.
 

@@ -1,0 +1,294 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Case Study 01: This is a template},
+  pdfauthor={Hernane Braga and Lucas and Vinicius},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Case Study 01: This is a template}
+\author{Hernane Braga and Lucas and Vinicius}
+\date{January 19, 2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+This document provides a template for the Case Study reports. Reports
+should always start a short executive summary (call it an
+\emph{Abstract} if you want) to give the reader a general idea of the
+topic under investigation, the kind of analysis performed, the results
+obtained, and the general recommendations of the authors.
+
+There are (at least) two ways to render this document to \textbf{pdf} in
+R: one easy and one\ldots{} well, less easy.
+
+\hypertarget{experimental-design}{%
+\subsection{Experimental design}\label{experimental-design}}
+
+\hypertarget{first-experiment}{%
+\subsubsection{First Experiment}\label{first-experiment}}
+
+A section detailing the experimental setup. This is the place where you
+will define your test hypotheses, e.g.:
+\[\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}\]
+
+\hypertarget{second-experiment}{%
+\subsubsection{Second Experiment}\label{second-experiment}}
+
+A section detailing the experimental setup. This is the place where you
+will define your test hypotheses, e.g.:
+\[\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}\]
+
+\hypertarget{third-experiment}{%
+\subsubsection{Third Experiment}\label{third-experiment}}
+
+A section detailing the experimental setup. This is the place where you
+will define your test hypotheses, e.g.:
+\[\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}\]
+
+including the reasons behind your choices of the value for \(H_0\) and
+the directionality (or not) of \(H_1\).
+
+This is also the place where you should discuss (whenever necessary)
+your definitions of minimally relevant effects (\(\delta^*\)), sample
+size calculations, choice of power and significance levels, and any
+other relevant information about specificities in your data collection
+procedures.
+
+\hypertarget{description-of-the-data-collection}{%
+\subsubsection{Description of the data
+collection}\label{description-of-the-data-collection}}
+
+The data was split in two datasets, the first containing data from
+students from 2016 class and the other from 2017.It was necessary clean
+data for getting the variables of weigth and heigth from PPGE students.
+
+\hypertarget{first-experiment-dataset}{%
+\paragraph{First experiment dataset}\label{first-experiment-dataset}}
+
+\begin{itemize}
+\tightlist
+\item
+  Only man
+\end{itemize}
+
+The first step is to load and preprocess the data. For instance,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loading dataset}
+\NormalTok{dataset\_2016 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}data/imc\_20162.csv\textquotesingle{}}\NormalTok{, }\AttributeTok{sep=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{)}
+\NormalTok{dataset\_2017 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}data/CS01\_20172.csv\textquotesingle{}}\NormalTok{, }\AttributeTok{sep=}\StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+
+
+\CommentTok{\# Renaming columns}
+\FunctionTok{names}\NormalTok{(dataset\_2017)[}\FunctionTok{names}\NormalTok{(dataset\_2017) }\SpecialCharTok{==} \StringTok{"Sex"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Gender"}
+\FunctionTok{names}\NormalTok{(dataset\_2017)[}\FunctionTok{names}\NormalTok{(dataset\_2017) }\SpecialCharTok{==} \StringTok{"height.m"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Height.m"}
+
+
+\CommentTok{\# Selecting variables}
+\NormalTok{model\_var }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Height.m"}\NormalTok{, }\StringTok{"Weight.kg"}\NormalTok{, }\StringTok{"IMC"}\NormalTok{)}
+
+
+\CommentTok{\# Calculating IMC}
+\NormalTok{dataset\_2016[,}\StringTok{\textquotesingle{}IMC\textquotesingle{}}\NormalTok{] }\OtherTok{=}\NormalTok{ dataset\_2016[,}\StringTok{\textquotesingle{}Weight.kg\textquotesingle{}}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ (dataset\_2016[,}\StringTok{\textquotesingle{}Height.m\textquotesingle{}}\NormalTok{])}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{dataset\_2017[,}\StringTok{\textquotesingle{}IMC\textquotesingle{}}\NormalTok{] }\OtherTok{=}\NormalTok{ dataset\_2017[,}\StringTok{\textquotesingle{}Weight.kg\textquotesingle{}}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ (dataset\_2017[,}\StringTok{\textquotesingle{}Height.m\textquotesingle{}}\NormalTok{])}\SpecialCharTok{\^{}}\DecValTok{2}
+
+
+\CommentTok{\# Selecting PPGEE students}
+\NormalTok{PPGEE\_2016students }\OtherTok{\textless{}{-}}\NormalTok{ dataset\_2016[}\FunctionTok{which}\NormalTok{(dataset\_2016}\SpecialCharTok{$}\NormalTok{Course }\SpecialCharTok{==} \StringTok{\textquotesingle{}PPGEE\textquotesingle{}}\NormalTok{), ]}
+
+
+\CommentTok{\# Male students}
+\NormalTok{male\_students2016 }\OtherTok{\textless{}{-}}\NormalTok{ PPGEE\_2016students[}\FunctionTok{which}\NormalTok{(PPGEE\_2016students}\SpecialCharTok{$}\NormalTok{Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{), ]}
+\NormalTok{male\_students2017 }\OtherTok{\textless{}{-}}\NormalTok{ dataset\_2017[}\FunctionTok{which}\NormalTok{(dataset\_2017}\SpecialCharTok{$}\NormalTok{Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{), ]}
+
+
+\CommentTok{\# Female students}
+\NormalTok{female\_students2016 }\OtherTok{\textless{}{-}}\NormalTok{ PPGEE\_2016students[}\FunctionTok{which}\NormalTok{(PPGEE\_2016students}\SpecialCharTok{$}\NormalTok{Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}F\textquotesingle{}}\NormalTok{), ]}
+\NormalTok{female\_students2017 }\OtherTok{\textless{}{-}}\NormalTok{ dataset\_2017[}\FunctionTok{which}\NormalTok{(dataset\_2017}\SpecialCharTok{$}\NormalTok{Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}F\textquotesingle{}}\NormalTok{), ]}
+
+
+\CommentTok{\# Experiment dataset {-} Male x Female IMC}
+\NormalTok{male\_students }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(male\_students2016[model\_var], male\_students2017[model\_var])}
+\NormalTok{female\_students }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(female\_students2016[model\_var], female\_students2017[model\_var])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exploratory-data-analysis}{%
+\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+The first step is to load and preprocess the data. For instance,
+
+To get an initial feel for the relationships between the relevant
+variables of your experiment it is frequently interesting to perform
+some preliminary (exploratory) analysis. This is frequently referred to
+as \emph{getting a feel} of your data, and can suggest procedures (such
+as outlier investigation or data transformations) to experienced
+experimenters.
+
+Your preliminary analysis should be described together with the plots.
+In this example, two facts are immediately clear from the plots: first,
+\textbf{mpg} tends to correlate well with many of the other variables,
+most intensely with \textbf{drat} (positively) and \textbf{wt}
+(negatively). It is also clear that many of the variables are highly
+correlated (e.g., \textbf{wt} and \textbf{disp}). Second, it seems like
+manual transmission models present larger values of \textbf{mpg} than
+the automatic ones. In the next section a linear model will be fit to
+the data in order to investigate the significance and magnitude of this
+possible effect.
+
+\hypertarget{statistical-analysis}{%
+\subsection{Statistical Analysis}\label{statistical-analysis}}
+
+Your statistical analysis should come here. This is the place where you
+should fit your statistical model, get the results of your significance
+test, your effect size estimates and confidence intervals.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model}\OtherTok{\textless{}{-}}\FunctionTok{aov}\NormalTok{(mpg}\SpecialCharTok{\textasciitilde{}}\NormalTok{am}\SpecialCharTok{*}\NormalTok{disp,}\AttributeTok{data=}\NormalTok{mtcars)}
+\FunctionTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value   Pr(>F)    
+## am           1  405.2   405.2  47.948 1.58e-07 ***
+## disp         1  420.6   420.6  49.778 1.13e-07 ***
+## am:disp      1   63.7    63.7   7.537   0.0104 *  
+## Residuals   28  236.6     8.4                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\hypertarget{checking-model-assumptions}{%
+\subsubsection{Checking Model
+Assumptions}\label{checking-model-assumptions}}
+
+The assumptions of your test should also be validated, and possible
+effects of violations should also be explored.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{mai=}\NormalTok{.}\DecValTok{3}\SpecialCharTok{*}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(model,}\AttributeTok{pch=}\DecValTok{16}\NormalTok{,}\AttributeTok{lty=}\DecValTok{1}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{estudo_01_files/figure-latex/resplots-1.pdf}
+\caption{Residual plots for the anova model}
+\end{figure}
+
+\hypertarget{conclusions-and-recommendations}{%
+\subsubsection{Conclusions and
+Recommendations}\label{conclusions-and-recommendations}}
+
+The discussion of your results, and the scientific/technical meaning of
+the effects detected, should be placed here. Always be sure to tie your
+results back to the original question of interest!
+
+\end{document}
