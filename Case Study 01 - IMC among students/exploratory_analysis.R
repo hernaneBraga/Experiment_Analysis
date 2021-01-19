@@ -49,5 +49,17 @@ legend("topright", inset=.02, title="Gender",
 
 
 
+hgA <- hist(male_students$IMC, breaks = 12)
+hgB <- hist(female_students$IMC)
+
+range(c(hgA$breaks, hgB$breaks)) # Get range for x-axis
 
 
+max(c(hgA$count, hgB$count)) # Get range for y-axis
+
+
+plot(hgA, col ='gold', xlim = c(13,40), xlab = 'IMC', main ='IMC Histogram')
+plot(hgB, add = TRUE, col = 'darkgreen')
+
+legend("topright", inset=.02, title="Gender",
+       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.75)
