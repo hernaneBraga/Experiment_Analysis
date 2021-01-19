@@ -87,6 +87,16 @@ female_students <- rbind(female_students2016[model_var], female_students2017[mod
 ## Exploratory Data Analysis
 The first step is to load and preprocess the data. For instance,
 
+```{r exploreData}
+# Boxplot analysis
+
+boxplot(male_students$IMC, female_students$IMC, main="IMC Analysis", col=(c("gold","darkgreen")),
+        ylab="IMC Value")
+
+
+legend("topright", inset=.02, title="Gender",
+       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.8)
+```
 
 To get an initial feel for the relationships between the relevant variables of your experiment it is frequently interesting to perform some preliminary (exploratory) analysis. This is frequently referred to as _getting a feel_ of your data, and can suggest procedures (such as outlier investigation or data transformations) to experienced experimenters.
 
