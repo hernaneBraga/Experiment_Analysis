@@ -57,7 +57,7 @@ output:
 ```
 
 ## Third Test
-```{r, child=c('blocks/test1.Rmd')}
+```{r, child=c('blocks/test3.Rmd')}
 
 ```
 

@@ -1,5 +1,13 @@
-Your statistical analysis should come here. This is the place where you should fit your statistical model, get the results of your significance test, your effect size estimates and confidence intervals.
+To evaluete the test, the Fligner-Killen test of homogeneity of variances is used to compare both genres population's variances. THen, the residue from the difference between an observation and its population's mean is also presented.
 
 ```{r results='hold'}
-
+FvsM= stack(list(Female=female_students$IMC, Male=male_students$IMC))
+fligner.test(values~ind,FvsM) # OK
 ```
+
+```{r}
+resid <- tapply(X = FvsM$values, INDEX = FvsM$ind, FUN = function(x){x - mean(x)})
+stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,xlab = "mean",ylab = "residuals", main = "Stripchart - Residue from Female and Male population's mean")
+```
+
+With these results, there is no evidence that for rejecting $H_0$.

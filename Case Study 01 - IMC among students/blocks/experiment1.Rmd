@@ -1,2 +1,5 @@
 The first experiment's null hypothesis explicits that there is no difference between man or woman BMI means, given that this indicator doesn't incorporates genre in its calculation. Therefore, our alternative hypothesis is that is some difference between genre that reflects into the mean.
-$$\begin{cases} H_0: \overline{\mu_1} = \overline{\mu_2}&\\H_1: \overline{\mu_1} \neq \overline{\mu_2}\end{cases}$$
+$$
+\begin{cases} H_0: \overline{\mu_1} = \overline{\mu_2}&\\H_1: \overline{\mu_1} \neq \overline{\mu_2}\end{cases}
+$$
+In this case, the test for this experiment is to check the BMI variances' equality. Given that this is true (i.e. both populations' variance are equal), so is the null hypothesis. 

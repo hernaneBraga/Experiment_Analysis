@@ -5,6 +5,7 @@ The data was split in two datasets, the first containing data from students from
 
 The first step is to load and preprocess the data. For instance,
 ```{r loaddata}
+library(car)
 # Loading dataset
 
 datapath <- '../data/'

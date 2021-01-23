@@ -1,4 +1,32 @@
-The assumptions of your test should also be validated, and possible effects of violations should also be explored.
-```{r 
+To check if the chosen model is correct and the assumptions in the testing phase were evaluated correctly, the data's normality is tested
 
+- Data: Male and Female
+```{r}
+p_female_stundents <- shapiro.test(female_students$IMC)$p.value #OK
+qqPlot(female_students$IMC)
+p_male_stundents <- shapiro.test(male_students$IMC)$p.value #OK
+qqPlot(male_students$IMC)
+
+```
+
+- Data: Male 2016-2 and Male 2017-2
+```{r}
+p_male_stundents2016 <-shapiro.test(male_students2016$IMC)$p.value #OK
+qqPlot(male_students2016$IMC)
+p_male_stundents2017 <-shapiro.test(male_students2017$IMC)$p.value #OK
+qqPlot(male_students2017$IMC)
+```
+
+- Data: Female 2016-2 and Female 2017-2
+```{r}
+p_female_stundents2016 <-shapiro.test(female_students2016$IMC)$p.value #OK
+qqPlot(female_students2016$IMC)
+p_female_stundents2017 <-shapiro.test(female_students2017$IMC)$p.value #NOT OK
+qqPlot(female_students2017$IMC)
+```
+
+Since the dataset 'female_students2017' cannot be assumed normal, a non-parametric test must be issued for this case:
+
+```{r}
+wilcox.test(female_students2016$IMC,female_students2017$IMC)
 ```
