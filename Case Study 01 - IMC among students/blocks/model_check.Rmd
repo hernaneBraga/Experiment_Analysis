@@ -1,0 +1,4 @@
+The assumptions of your test should also be validated, and possible effects of violations should also be explored.
+```{r 
+
+```

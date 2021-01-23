@@ -1,0 +1,5 @@
+Your statistical analysis should come here. This is the place where you should fit your statistical model, get the results of your significance test, your effect size estimates and confidence intervals.
+
+```{r results='hold'}
+
+```

@@ -1,0 +1,2 @@
+A section detailing the experimental setup. This is the place where you will define your test hypotheses, e.g.:
+$$\begin{cases} H_0: \mu_1 \leq \mu_2&\\H_1: \mu_1 > \mu_2\end{cases}$$
