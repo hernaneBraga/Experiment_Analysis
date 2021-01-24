@@ -3,7 +3,8 @@ output:
   html_document: default
   pdf_document: default
 ---
-The first step is to load and preprocess the data. For instance,
+The boxplot below indicates a high probability of an outlier at male samples. It also demonstrates a trend that males have a higher BMI than females.
+
 
 ```{r exploreData}
 # Boxplot analysis
@@ -16,7 +17,8 @@ legend("topright", inset=.02, title="Gender",
        c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.8)
 ```
 
-To get an initial feel for the relationships between the relevant variables of your experiment it is frequently interesting to perform some preliminary (exploratory) analysis. This is frequently referred to as _getting a feel_ of your data, and can suggest procedures (such as outlier investigation or data transformations) to experienced experimenters.
+The histogram below goes more in-depth into this analysis, showing that only one male sample has BMI greater than 35. It also demonstrates that female distribution has a smaller BMI than men.
+
 
 ```{r exploreData}
 hgA <- hist(male_students$IMC, breaks = 12)
@@ -28,4 +30,3 @@ plot(hgB, add = TRUE, col = 'darkgreen')
 legend("topright", inset=.02, title="Gender",
        c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.75)
 ```
-Your preliminary analysis should be described together with the plots. In this example, two facts are immediately clear from the plots: first, **mpg** tends to correlate well with many of the other variables, most intensely with **drat** (positively) and **wt** (negatively). It is also clear that many of the variables are highly correlated (e.g., **wt** and **disp**). Second, it seems like manual transmission models present larger values of **mpg** than the automatic ones. In the next section a linear model will be fit to the data in order to investigate the significance and magnitude of this possible effect.
