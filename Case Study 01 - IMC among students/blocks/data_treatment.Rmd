@@ -26,6 +26,7 @@ After data transformations, the analysis datasets were created:
 
 
 ```{r loaddata}
+library(car)
 
 # Loading dataset
 datapath <- '../data/'
