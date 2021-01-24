@@ -1,8 +1,8 @@
-To evaluete the test, the Fligner-Killen test of homogeneity of variances is used to compare both genres population's variances. THen, the residue from the difference between an observation and its population's mean is also presented.
+To evaluete the test, the Fligner-Killen test of homogeneity of variances is used to compare both genres population's variances. Then, the residue from the difference between an observation and its population's mean is also presented.
 
 ```{r results='hold'}
 FvsM= stack(list(Female=female_students$IMC, Male=male_students$IMC))
-fligner.test(values~ind,FvsM) # OK
+fligner.test(values~ind,FvsM) 
 ```
 
 ```{r}

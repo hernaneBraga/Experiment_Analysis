@@ -1,5 +1,7 @@
-In this study, two population's BMI are compared: postgraduate students in Electrical Engineering at UFMG in the semesters 2016-2 and 2017-2. The BMI value is been used as a student lifestyle indicator. However, as it is known, the BMI alone isn't a good indicator to summarize it. So, for this study, each population will be divided into two genres, masculine and feminine and their BMI will be compared in three diferent scenarios:
-- between man and woman (considering both semesters),
-- between man from 2016-2 semester and 2017-2 semester,
-- between woman from 2016-2 semester and 2017-2 semester.
+In this study, two population's BMI are compared: postgraduate students in Electrical Engineering at UFMG in the semesters 2016-2 and 2017-2. The BMI value is been used as a student lifestyle indicator. However, as it is known, the BMI alone isn't a good indicator to summarize it. So, for this study, each population will be divided into two genres, masculine and feminine and their BMI will be compared in three different scenarios:
+
+1. between man and woman (considering both semesters);
+2. between man from 2016-2 semester and 2017-2 semester;
+3. between woman from 2016-2 semester and 2017-2 semester.
+
 Therefore, next in this study, each experiment will be discussed and how the data were treated for each of them, alongside with a exploratory analysis of it. Then, each experiment will be tested and the model assumptions' checked.

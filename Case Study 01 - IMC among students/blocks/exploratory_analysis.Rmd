@@ -20,9 +20,17 @@ legend("topright", inset=.02, title="Gender",
 The histogram below goes more in-depth into this analysis, showing that only one male sample has BMI greater than 35. It also demonstrates that female distribution has a smaller BMI than men.
 
 
-```{r exploreData_hist}
+```{r exploreData_hist1, include=FALSE}
 hgA <- hist(male_students$IMC, breaks = 12)
 hgB <- hist(female_students$IMC)
+
+```
+
+```{r exploreData_hist2}
+
+# Code of the hidden cell above
+#hgA <- hist(male_students$IMC, breaks = 12)
+#hgB <- hist(female_students$IMC)
 
 plot(hgA, col ='gold', xlim = c(13,40), xlab = 'BMI', main ='BMI Histogram')
 plot(hgB, add = TRUE, col = 'darkgreen')

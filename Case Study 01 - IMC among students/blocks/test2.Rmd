@@ -3,3 +3,9 @@ Your statistical analysis should come here. This is the place where you should f
 ```{r results='hold'}
 
 ```
+
+The defined characteristics of the test are:
+
+- Significance level: 0.05
+- Power level: 0.9
+
