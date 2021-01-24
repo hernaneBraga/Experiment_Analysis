@@ -4,6 +4,7 @@ To check if the chosen model is correct and the assumptions in the testing phase
 ```{r}
 p_female_stundents <- shapiro.test(female_students$IMC)$p.value #OK
 qqPlot(female_students$IMC)
+
 p_male_stundents <- shapiro.test(male_students$IMC)$p.value #OK
 qqPlot(male_students$IMC)
 
