@@ -14,6 +14,7 @@ output:
 ```{r, child=c('blocks/summary.Rmd')}
 
 ```
+
 ## Experimental design
 
 ### First Experiment
@@ -31,11 +32,12 @@ output:
 
 ```
 
+### Experiment Details
 ```{r, child=c('blocks/experiment_conclusion.Rmd')}
 
 ```
 
-### Description of the data collection
+## Description of the data collection
 ```{r, child=c('blocks/data_treatment.Rmd')}
 
 ```
@@ -45,29 +47,29 @@ output:
 
 ```
 
-### Statistical Analysis
+## Statistical Analysis
 
-## First Test
+### First Test
 ```{r, child=c('blocks/test1.Rmd')}
 
 ```
 
-## Second Test
+### Second Test
 ```{r, child=c('blocks/test2.Rmd')}
 
 ```
 
-## Third Test
+### Third Test
 ```{r, child=c('blocks/test3.Rmd')}
 
 ```
 
-### Checking Model Assumptions
+## Checking Model Assumptions
 ```{r, child=c('blocks/model_check.Rmd')}
 
 ```
 
-### Conclusions and Recommendations
+## Conclusions and Recommendations
 ```{r, child=c('blocks/conclusion.Rmd')}
 
 ```
