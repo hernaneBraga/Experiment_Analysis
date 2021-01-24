@@ -1,7 +1,7 @@
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 The boxplot in the left, indicates a high probability of an outlier at male samples. It also demonstrates a trend that males have a higher BMI than females.
 
@@ -20,11 +20,11 @@ hgB <- hist(female_students$IMC)
 par(mfrow=c(1,2))
 
 # Boxplot analysis
-boxplot(male_students$IMC, female_students$IMC, main="BMI Analysis", col=(c("gold","darkgreen")),
-        ylab="BMI Value")
+boxplot(male_students$IMC, female_students$IMC, main="BMI Analysis",
+        col=(c("gold","darkgreen")), ylab="BMI Value")
 
 legend("topright", inset=.02, title="Gender",
-       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.8)
+       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=FALSE, cex=0.8)
 
 
 # Histogram analysis
@@ -32,5 +32,5 @@ plot(hgA, col ='gold', xlim = c(13,40), xlab = 'BMI', main ='BMI Histogram')
 plot(hgB, add = TRUE, col = 'darkgreen')
 
 legend("topright", inset=.02, title="Gender",
-       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=TRUE, cex=0.75)
+       c("Male","Female"), fill=(c("gold","darkgreen")), horiz=FALSE, cex=0.75)
 ```
