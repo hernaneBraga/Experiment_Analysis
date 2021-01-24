@@ -1,6 +1,47 @@
 To check if the chosen model is correct and the assumptions in the testing phase were evaluated correctly, the data's normality is tested
 
+### Second Experiment
+The second experiment tests if there's a difference in the BMI of male students from different semesters. 
+
+#### Independence of samples:
+aaa
+
+
+#### Normality check:
+
+For verifying distribution normality, the Shapiro-Wilk test is applied. If the p-value is less than our significance level of 0.05, then the null hypothesis is rejected, and the data is not normally distributed.
+
+```{r test2_norm_check}
+
+p_male_stundents2016 <-shapiro.test(male_students2016$IMC)$p.value #OK
+p_male_stundents2017 <-shapiro.test(male_students2017$IMC)$p.value #OK
+
+```
+
+The results above indicates:
+
+- 2016/2 students p-value = `r p_male_stundents2016`  
+- 2017/2 students p-value = `r p_male_stundents2017`  
+
+Since the p-value is greater than 0.05, the null hypothesis is not rejected, and the data is normally distributed. A plot demonstrating data normality can be seen below.
+
+
+```{r test2_norm_checkplot}
+
+par(mfrow=c(1,2))
+qqPlot(male_students2016$IMC, main="2016/2 male students")
+qqPlot(male_students2017$IMC, main="2017/2 male students")
+
+```
+
+
+#### Independence of samples:
+aaa
+
 - Data: Male and Female
+
+
+
 ```{r}
 p_female_stundents <- shapiro.test(female_students$IMC)$p.value #OK
 qqPlot(female_students$IMC)
@@ -10,13 +51,7 @@ qqPlot(male_students$IMC)
 
 ```
 
-- Data: Male 2016-2 and Male 2017-2
-```{r}
-p_male_stundents2016 <-shapiro.test(male_students2016$IMC)$p.value #OK
-qqPlot(male_students2016$IMC)
-p_male_stundents2017 <-shapiro.test(male_students2017$IMC)$p.value #OK
-qqPlot(male_students2017$IMC)
-```
+
 
 - Data: Female 2016-2 and Female 2017-2
 ```{r}
