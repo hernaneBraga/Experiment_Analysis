@@ -1,13 +1,10 @@
-To evaluete the test, the Fligner-Killen test of homogeneity of variances is used to compare both genres population's variances. Then, the residue from the difference between an observation and its population's mean is also presented.
-
 ```{r results='hold'}
-FvsM= stack(list(Female=female_students$IMC, Male=male_students$IMC))
-fligner.test(values~ind,FvsM) 
+f_mean = mean(female_students$IMC)
+m_mean = mean(male_students$IMC)
+t_mean = (f_mean+m_mean)/2
+FvsM = stack(list(Female=female_students$IMC, Male=male_students$IMC))
+t.test(FvsM$values, y = NULL,
+       alternative = c("two.sided", "less", "greater"),
+       mu = t_mean, paired = FALSE, var.equal = FALSE,
+       conf.level = 0.95)
 ```
-
-```{r}
-resid <- tapply(X = FvsM$values, INDEX = FvsM$ind, FUN = function(x){x - mean(x)})
-stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,xlab = "mean",ylab = "residuals", main = "Stripchart - Residue from Female and Male population's mean")
-```
-
-With these results, given that p-value is greater than $\alpha/2 = 0.025$, there is no evidence that for rejecting $H_0$.

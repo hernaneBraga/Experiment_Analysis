@@ -31,7 +31,7 @@ qqPlot(female_students$IMC, main="Female students")
 
 
 #### Equality of variances:
-The result of the Fligner-Killeen test below shows that both distribution an equal variance on it's population.
+The result of the Fligner-Killeen test below shows that both distribution have an equal variance on it's population.
 
 
 ```{r results='hold'}
@@ -81,7 +81,7 @@ qqPlot(male_students2017$IMC, main="2017/2 male students")
 
 
 #### Equality of variances:
-The result of the Fligner-Killeen test below shows that both distribution an equal variance on it's population.
+The result of the Fligner-Killeen test below shows that both distribution have an equal variance on it's population.
 
 ```{r test2_var_check}
 
