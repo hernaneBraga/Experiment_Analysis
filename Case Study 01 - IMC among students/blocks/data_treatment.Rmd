@@ -1,13 +1,33 @@
-The data was split in two datasets, the first containing data from students from 2016 class and the other from 2017.It was necessary clean data for getting the variables of weigth and heigth from PPGE students.
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+The original data contained two datasets: the first had Electrical Engineering graduate and postgraduate students from the 2016/2 semester. The last described only postgraduate students on the 2017/2 semester.
 
-#### First experiment dataset
-- Only man 
+Since the target variable is the BMI population, the following steps are applied for data cleaning: 
 
-The first step is to load and preprocess the data. For instance,
+2016 Dataset:
+
+- Calculate BMI for all samples
+- Selecting only postgraduate students
+
+2017 Dataset:
+
+- Rename columns following 2016 standard
+- Calculate BMI for all samples
+
+After data transformations, the analysis datasets were created:
+
+- **male_students**: male students from the 2016/2 and 2017/2 semester
+- **female_students**: female students from the 2016/2 and 2017/2 semester
+- **male_students2016**, female_students2016: male and female students from the 2016/2 semester
+- **male_students2017**, female_students2017: male and female students from the 2017/2 semester
+
+
 ```{r loaddata}
-library(car)
-# Loading dataset
 
+# Loading dataset
 datapath <- '../data/'
 
 dataset_2016 <- read.csv(paste(datapath,'imc_20162.csv',sep = "/"), sep=',')
