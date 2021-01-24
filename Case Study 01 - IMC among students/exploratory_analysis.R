@@ -58,7 +58,7 @@ range(c(hgA$breaks, hgB$breaks)) # Get range for x-axis
 max(c(hgA$count, hgB$count)) # Get range for y-axis
 
 
-plot(hgA, col ='gold', xlim = c(13,40), xlab = 'IMC', main ='IMC Histogram')
+plot(hgA, col ='gold', xlim = c(13,40), xlab = 'BMI', main ='BMI Histogram')
 plot(hgB, add = TRUE, col = 'darkgreen')
 
 legend("topright", inset=.02, title="Gender",
