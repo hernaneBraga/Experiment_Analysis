@@ -10,4 +10,4 @@ resid <- tapply(X = FvsM$values, INDEX = FvsM$ind, FUN = function(x){x - mean(x)
 stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,xlab = "mean",ylab = "residuals", main = "Stripchart - Residue from Female and Male population's mean")
 ```
 
-With these results, there is no evidence that for rejecting $H_0$.
+With these results, given that p-value is greater than $0.01$, there is no evidence that for rejecting $H_0$.

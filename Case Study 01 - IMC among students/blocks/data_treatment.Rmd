@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 The original data contained two datasets: the first had Electrical Engineering graduate and postgraduate students from the 2016/2 semester. The last described only postgraduate students on the 2017/2 semester.
 
 Since the target variable is the BMI population, the following steps are applied for data cleaning: 
