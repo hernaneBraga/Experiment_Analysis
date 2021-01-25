@@ -2,12 +2,12 @@
 title: 'Case Study 01: Comparison of the average BMI of PPGEE-UFMG students over two
   semesters'
 author: "Hernane Braga, Lucas Carneiro and Vinicius Ferreira"
-date: "January 23, 2021"
+date: "January 25, 2021"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     fig_caption: yes
+  html_document:
+    df_print: paged
 ---
 
 ## Summary
@@ -32,7 +32,7 @@ output:
 
 ```
 
-### Experiment Details
+
 ```{r, child=c('blocks/experiment_conclusion.Rmd')}
 
 ```
@@ -46,6 +46,13 @@ output:
 ```{r, child=c('blocks/exploratory_analysis.Rmd')}
 
 ```
+
+
+## Checking Model Assumptions
+```{r, child=c('blocks/model_check.Rmd')}
+
+```
+
 
 ## Statistical Analysis
 
@@ -65,10 +72,7 @@ output:
 
 ```
 
-## Checking Model Assumptions
-```{r, child=c('blocks/model_check.Rmd')}
 
-```
 
 ## Conclusions and Recommendations
 ```{r, child=c('blocks/conclusion.Rmd')}

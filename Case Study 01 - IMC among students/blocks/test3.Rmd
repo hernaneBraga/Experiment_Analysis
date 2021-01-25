@@ -1,5 +1,7 @@
-Your statistical analysis should come here. This is the place where you should fit your statistical model, get the results of your significance test, your effect size estimates and confidence intervals.
+The Mann-Whitney U test (also known as Wilcoxon rank-sum test) is a non-parametric test alternative for Student’s t-test. It tests the null hypothesis that the means of both groups differ by a value of , here considered $\mu=0$ (equal means). 
 
-```{r results='hold'}
-
+```{r wilcox}
+wilcox.test(female_students2016$IMC, female_students2017$IMC)
 ```
+
+The Wilcoxon rank-sum test resulted in p-value of 0.0727 implying that the means of both groups differ by a value that is not equal to zero.
