@@ -95,7 +95,8 @@ fligner.test(values~ind,M2016vsM2017) # OK
 
 resid_m2016_17 <- tapply(X = M2016vsM2017$values, INDEX = M2016vsM2017$ind, FUN = function(x){x - mean(x)})
 
-stripchart(x = resid_m2016_17, vertical = TRUE,pch = 16,cex = 1.5,las = 1,xlab = "mean",ylab = "residuals")
+stripchart(x = resid_m2016_17, vertical = TRUE,pch = 16,cex = 1.5,las = 1,xlab = "mean",ylab = "residuals", main = "Stripchart - Residue mean from 2016 and 2017 Male students")
+
 
 
 ```
