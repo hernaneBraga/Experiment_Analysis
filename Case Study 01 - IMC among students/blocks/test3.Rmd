@@ -1,4 +1,4 @@
-The Mann-Whitney U test (also known as Wilcoxon rank-sum test) is a non-parametric test alternative for Student’s t-test. It tests the null hypothesis that the means of both groups differ by a value of , here considered $\mu=0$ (equal means). 
+The Mann-Whitney U test (also known as Wilcoxon rank-sum test) is a non-parametric test alternative for Student’s t-test. It tests the null hypothesis that the means of both groups differ by a value of $\mu$, here considered $\mu=0$ (equal means). 
 
 ```{r wilcox}
 wilcox.test(female_students2016$IMC, female_students2017$IMC)

@@ -1,9 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-The boxplot in the left, indicates a high probability of an outlier at male samples. It also demonstrates a trend that males have a higher BMI than females.
+The boxplot in the left indicates a high probability of an outlier at male samples. It also demonstrates a trend that males have a higher BMI than females.
 
 The histogram at right, goes more in-depth into this analysis, showing that only one male sample has BMI greater than 35. It also demonstrates that female distribution has a smaller BMI than men.
 

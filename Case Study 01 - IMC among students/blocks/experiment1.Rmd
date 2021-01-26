@@ -1,4 +1,4 @@
-The first experiment's null hypothesis explicits that there is no difference between man or woman BMI means, given that this indicator doesn't incorporates genre in its calculation. Therefore, our alternative hypothesis is that is some difference between genre that reflects into how the means varies.
+The first experiment's null hypothesis explicits that there is no difference between man or woman BMI means, given that this indicator doesn't incorporates genre in its calculation. Therefore, our alternative hypothesis is that there is some difference between genre that reflects into how the means varies.
 $$
 \begin{cases} H_0: \overline{\mu_1} = \overline{\mu_2}&\\H_1: \overline{\mu_1} \neq \overline{\mu_2}\end{cases}
 $$

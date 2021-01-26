@@ -1,1 +1,7 @@
-Teste de conclusão
+A study was performed aiming to compare populations of UFMG Electrical Engineering postgraduation students from two different semesters. Three scenarios were created so it would be possible to compare the populations in distinct approaches.
+
+Firstly, male and female means BMI were compared. It was shown that the mean value of BMI was higher in the male population. Since BMI is a convoluted index, this result could be an indication of different health and food habits or genetic predisposition, per example. Another stated issue was a possible outlier in the male population. This indicates a person that is unlikely most male students in the program.
+
+Then, male means of BMI were compared between semesters. The student’s t-test implied that, although the samples came from the same gender, the mean values differ comparing semesters. This result alludes to differences in age or differences in lifestyle.
+
+Lastly, female means of BMI were compared between semesters. It was shown that the 2017-2 female sample could not be assumed to come from a normal distribution, and a different test was assessed. The results suggested that both groups had different means, similar to the discovery in the previous experiment.

@@ -1,4 +1,4 @@
-The original data contained two datasets: the first had Electrical Engineering graduate and postgraduate students from the 2016/2 semester. The last described only postgraduate students on the 2017/2 semester.
+The original data contained two datasets: the first had Electrical Engineering graduate and postgraduate students from the 2016-2 semester. The last described only postgraduate students on the 2017-2 semester.
 
 Since the target variable is the BMI population, the following steps are applied for data cleaning: 
 
@@ -14,13 +14,13 @@ Since the target variable is the BMI population, the following steps are applied
 
 After data transformations, the analysis datasets were created:
 
-- **male_students**: male students from the 2016/2 and 2017/2 semester
-- **female_students**: female students from the 2016/2 and 2017/2 semester
-- **male_students2016**, female_students2016: male and female students from the 2016/2 semester
-- **male_students2017**, female_students2017: male and female students from the 2017/2 semester
+- **male_students**: male students from 2016-2 and 2017-2 semester
+- **female_students**: female students from 2016-2 and 2017-2 semester
+- **male_students2016**, female_students2016: male and female students from 2016-2 semester
+- **male_students2017**, female_students2017: male and female students from 2017-2 semester
 
 
-```{r loaddata}
+```{r loaddata, results='hide'}
 library(car)
 
 # Loading dataset

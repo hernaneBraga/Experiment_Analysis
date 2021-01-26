@@ -1,7 +1,9 @@
 ---
-title: 'Case Study 01: Comparison of the average BMI of PPGEE-UFMG students over two
-  semesters'
-author: "Hernane Braga, Lucas Carneiro and Vinicius Ferreira"
+title: 'Case Study 01: Comparison of the average BMI of PPGEE-UFMG students over two semesters'
+author:
+  - Hernane Braga, Data Treatment
+  - Lucas Carneiro, Data Analysis
+  - Vinicius Ferreira, Verification
 date: "January 25, 2021"
 output:
   pdf_document:
@@ -10,24 +12,24 @@ output:
     df_print: paged
 ---
 
-## Summary
+# Summary
 ```{r, child=c('blocks/summary.Rmd')}
 
 ```
 
-## Experimental design
+# Experimental design
 
-### First Experiment
+## First Experiment
 ```{r, child=c('blocks/experiment1.Rmd')}
 
 ```
 
-### Second Experiment
+## Second Experiment
 ```{r, child=c('blocks/experiment2.Rmd')}
 
 ```
 
-### Third Experiment
+## Third Experiment
 ```{r, child=c('blocks/experiment3.Rmd')}
 
 ```
@@ -37,44 +39,40 @@ output:
 
 ```
 
-## Description of the data collection
+# Description of the data collection
 ```{r, child=c('blocks/data_treatment.Rmd')}
 
 ```
 
-## Exploratory Data Analysis
+# Exploratory Data Analysis
 ```{r, child=c('blocks/exploratory_analysis.Rmd')}
 
 ```
 
-
-## Checking Model Assumptions
+# Checking Model Assumptions
 ```{r, child=c('blocks/model_check.Rmd')}
 
 ```
 
 
-## Statistical Analysis
+# Statistical Analysis
 
-
-### First Test
+## First Test
 ```{r, child=c('blocks/test1.Rmd')}
 
 ```
 
-### Second Test
+## Second Test
 ```{r, child=c('blocks/test2.Rmd')}
 
 ```
 
-### Third Test
+## Third Test
 ```{r, child=c('blocks/test3.Rmd')}
 
 ```
 
-
-
-## Conclusions and Recommendations
+# Conclusions and Recommendations
 ```{r, child=c('blocks/conclusion.Rmd')}
 
 ```
