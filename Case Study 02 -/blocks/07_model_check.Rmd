@@ -1,0 +1,110 @@
+## Independence of samples:
+Due to the low quantity of available samples, in this work data can be safely assumed independent for the proposed experiments, i.e., possible effects of characteristics like age, health condition and genetic predisposition are disregarded. Thus, for each experiment, it is necessary to assess data normality and homogeneity of variances. The Shapiro-Wilk test is used as a normality test, it tests the null hypothesis that the samples came from a normally distributed population. For homogeneity of variances, the Fligner-Killeen test is used, it tests the null hypothesis that variances in each distinct group are equal.
+
+## Normality check:
+
+For verifying distribution normality, the Shapiro-Wilk test is applied. If the p-value is less than our significance level of 0.05, then the null hypothesis is rejected, and the data is not normally distributed.
+
+### First Experiment
+
+The results indicates:
+
+```{r test1_norm_check}
+p_male_stundents <- shapiro.test(male_students$IMC)$p.value #OK
+p_female_stundents <- shapiro.test(female_students$IMC)$p.value #OK
+```
+
+- Male students p-value = `r p_male_stundents`  
+- Female students p-value = `r p_female_stundents`  
+
+Since the p-value is greater than 0.05, the null hypothesis is not rejected, and the data is normally distributed. A quantile-quantile plot (Q-Q plot) demonstrating the data normality can be seen below.
+
+```{r test1_norm_checkplot}
+par(mfrow=c(1,2))
+qqPlot(male_students$IMC, main="Male students")
+qqPlot(female_students$IMC, main="Female students")
+```
+
+### Second Experiment
+
+The results indicates:
+
+```{r test2_norm_check}
+p_male_stundents2016 <-shapiro.test(male_students2016$IMC)$p.value #OK
+p_male_stundents2017 <-shapiro.test(male_students2017$IMC)$p.value #OK
+```
+
+- 2016-2 male students p-value = `r p_male_stundents2016`  
+- 2017-2 male students p-value = `r p_male_stundents2017`  
+
+Since the p-value is greater than 0.05, the null hypothesis is not rejected, and the data is normally distributed. A plot demonstrating data normality can be seen below.
+
+```{r test2_norm_checkplot}
+par(mfrow=c(1,2))
+qqPlot(male_students2016$IMC, main="2016-2 male students")
+qqPlot(male_students2017$IMC, main="2017-2 male students")
+```
+
+### Third Experiment
+
+The results indicates:
+
+```{r test3_norm_check}
+p_female_stundents2016 <-shapiro.test(female_students2016$IMC)$p.value #OK
+p_female_stundents2017 <-shapiro.test(female_students2017$IMC)$p.value #NOT OK
+```
+
+- 2016-2 female students p-value = `r p_female_stundents2016`  
+- 2017-2 female students p-value = `r p_female_stundents2017`  
+
+A visual result can be seen at the plot below:
+
+```{r test3_norm_check_plot}
+par(mfrow=c(1,2))
+qqPlot(female_students2016$IMC, main="2016-2 female students")
+qqPlot(female_students2017$IMC, main="2017-2 female students")
+```
+
+Although Shapiro-Wilk test resulted in p-value of 0.4674 for Female 2016-2 group, implying that the samples came from a normally distributed population, the same is not true for group Female 2017-2 since the test resulted in p-value of 0.0366. Hence, an alternative for Student’s t-test must be employed for this experiment.
+
+## Equality of variances:
+
+### First Experiment
+The result of the Fligner-Killeen test below shows that both distribution have an equal variance on it's population.
+
+```{r test1_var_check}
+FvsM= stack(list(Female=female_students$IMC, Male=male_students$IMC))
+
+fligner.test(values~ind,FvsM)
+
+resid <- tapply(X = FvsM$values, INDEX = FvsM$ind,
+                FUN = function(x){x - mean(x)})
+
+stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,
+           xlab = "mean",ylab = "residuals",
+           main = "Stripchart - Residue from Female and Male population's mean")
+
+```
+
+### Second Experiment
+
+The result of the Fligner-Killeen test below shows that it failed to reject the null hypothesis. Thus, variance from both groups can be assumed equal.
+
+```{r test2_var_check}
+
+# Verify equality of variances between data sets (Male vs Female)
+M2016vsM2017 = stack(list(Male_2016 = male_students2016$IMC,
+                          Male_2017 = male_students2017$IMC)
+                     )
+
+fligner.test(values~ind,M2016vsM2017) # OK
+
+
+resid_m2016_17 <- tapply(X = M2016vsM2017$values,
+                         INDEX = M2016vsM2017$ind,
+                         FUN = function(x){x - mean(x)})
+
+stripchart(x = resid_m2016_17, vertical = TRUE,pch = 16,cex = 1.5,las = 1,
+           xlab = "mean",ylab = "residuals",
+           main = "Stripchart - Residue mean from 2016 and 2017 Male students")
+```

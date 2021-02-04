@@ -1,0 +1,8 @@
+The parameter of interest is the difference of BMI means of male students from the 2016-2 semester and 2017-2 semester. Thus, we can formulate the following hypothesis:
+
+$$\begin{cases} H_0: \overline{\mu_1}= \overline{\mu_2}&\\H_1: \overline{\mu_1} < \overline{\mu_2}\end{cases}$$
+
+In the hypothesis defined above, $\mu_1$ is the mean of male 2016-2 students and $\mu_2$  the mean from 2017-2 students. The defined hypothesis will be tested using a t-test and assuming that samples have a normal distribution, equal variance, and are independent samples. The defined characteristics of the test are:
+
+- Significance level: 0.05
+- Power level: 0.9

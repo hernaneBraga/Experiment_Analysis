@@ -1,0 +1,73 @@
+---
+title: 'Case Study 02: Comparison of the average BMI of PPGEE-UFMG students over two semesters'
+author:
+  - Hernane Braga, Data Treatment
+  - Lucas Carneiro, Data Analysis
+  - Vinicius Ferreira, Verification
+date: "January 25, 2021"
+output:
+  pdf_document:
+    fig_caption: yes
+  html_document:
+    df_print: paged
+---
+
+# Summary
+```{r, child=c('blocks/01_summary.Rmd')}
+
+```
+
+# Experimental design
+
+## First Experiment
+```{r, child=c('blocks/02_experiment1.Rmd')}
+
+```
+
+## Second Experiment
+```{r, child=c('blocks/03_experiment2.Rmd')}
+
+```
+
+## Third Experiment
+```{r, child=c('blocks/04_experiment3.Rmd')}
+
+```
+
+# Description of the data collection
+```{r, child=c('blocks/05_data_treatment.Rmd')}
+
+```
+
+# Exploratory Data Analysis
+```{r, child=c('blocks/06_exploratory_analysis.Rmd')}
+
+```
+
+# Checking Model Assumptions
+```{r, child=c('blocks/07_model_check.Rmd')}
+
+```
+
+
+# Statistical Analysis
+
+## First Test
+```{r, child=c('blocks/08_test1.Rmd')}
+
+```
+
+## Second Test
+```{r, child=c('blocks/09_test2.Rmd')}
+
+```
+
+## Third Test
+```{r, child=c('blocks/10_test3.Rmd')}
+
+```
+
+# Conclusions and Recommendations
+```{r, child=c('blocks/11_conclusion.Rmd')}
+
+```
