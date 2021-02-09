@@ -1,8 +1,6 @@
-Neste estudo de caso, um investidor coletou o preço de fechamento de cinco ações nos últimos 36 meses com a finalidade de escolher uma delas para investir todo o seu capital e alcançar a maior rentabilidade no mês seguinte. Como não estão disponíveis informações relevantes como nome das empresas, segmentos de atuação e outros fatos relevantes, serão utilizados apenas os valores da ação de cada mês para se recomendar uma ação.
+OI eu sou o goku!!
 
-Para gerar a recomendação final os seguintes fatores serão analisados:
 
-1. Volatilidade das ações;
-2. Tendências de crescimento e queda no longo prazo;
-3. Tendências de crescimento e queda no curto prazo;
+oi Lucas!!!
 
+aaaaaaaaaaaaqaaaa
