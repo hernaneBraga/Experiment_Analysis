@@ -1,10 +1,10 @@
 ---
-title: 'Case Study 02: Comparison of the average BMI of PPGEE-UFMG students over two semesters'
+title: 'Estudo de caso 02: escolha de qual a melhor ação para se investir todo o seu dinheiro'
 author:
   - Hernane Braga, Data Treatment
   - Lucas Carneiro, Data Analysis
   - Vinicius Ferreira, Verification
-date: "January 25, 2021"
+date: "Fevereiro 15, 2021"
 output:
   html_document:
     df_print: paged
@@ -12,38 +12,43 @@ output:
     fig_caption: yes
 ---
 
-# Summary
+# Sumário
 ```{r, child=c('blocks/01_summary.Rmd')}
 
 ```
 
-# Experimental design
 
-
-# Description of the data collection
-```#{r, child=c('blocks/05_data_treatment.Rmd')}
+# Desenho de experimentos
+```{r, child=c('blocks/02_experiment_design.Rmd')}
 
 ```
 
-# Exploratory Data Analysis
-```#{r, child=c('blocks/06_exploratory_analysis.Rmd')}
-
-```
-
-# Checking Model Assumptions
-```#{r, child=c('blocks/07_model_check.Rmd')}
+# Descrição de dados e tratamento 
+```{r, child=c('blocks/03_data_treatment.Rmd')}
 
 ```
 
 
-# Statistical Analysis
-
-
-```#{r, child=c('blocks/08_test1.Rmd')}
+# Análise exploratória de dados
+```{r, child=c('blocks/04_exploratory_analysis.Rmd')}
 
 ```
 
-# Conclusions and Recommendations
-```#{r, child=c('blocks/11_conclusion.Rmd')}
+
+
+# Conferindo presunções dos modelos
+```#{r, child=c('blocks/05_model_check.Rmd')}
 
 ```
+
+# Análise estatística
+```#{r, child=c('blocks/06_statistical_analysis.Rmd')}
+
+```
+
+
+# Conclusão e recomendação
+```#{r, child=c('blocks/07_conclusion.Rmd')}
+
+```
+
