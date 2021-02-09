@@ -1,40 +1,53 @@
+# Function to convert absolute values on series to percentual
+abs_serie_to_perct <- function(serie) {
+  
+  size = length(serie)
+  serie_perct = numeric(size-1)
+  
+  for(i in 1:size-1) {
+    vi = serie[i]
+    vf = serie[i+1]
+    perct_delta = (vf-vi)/vi
+    serie_perct[i] <- perct_delta
+  }
+  
+  return(serie_perct)
+}
+
+
 # Loading dataset
-df <- read.csv('data/DadosAcoesGrupoA.csv', sep=',', header = FALSE)
+raw_data <- read.csv('data/DadosAcoesGrupoA.csv', sep=',', header = FALSE)
+
+# Reverse each series 
+df <- raw_data[rev(1:nrow(raw_data)), ]
+
+s1 <- df[,1]
+s2 <- df[,2]
+s3 <- df[,3]
+s4 <- df[,4]
+s5 <- df[,5]
 
 
 
-dataset_2016 <- read.csv('data/imc_20162.csv', sep=',')
-dataset_2017 <- read.csv('data/CS01_20172.csv', sep=';')
+sp1 <- abs_serie_to_perct(s1)
+sp2 <- abs_serie_to_perct(s2)
+sp3 <- abs_serie_to_perct(s3)
+sp4 <- abs_serie_to_perct(s4)
+sp5 <- abs_serie_to_perct(s5)
 
 
-# Renaming columns
-names(dataset_2017)[names(dataset_2017) == "Sex"] <- "Gender"
-names(dataset_2017)[names(dataset_2017) == "height.m"] <- "Height.m"
+
+# Plot time series (fixed axis)
+plot(1:36,s1,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250))
+plot(1:36,s2,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250))
+plot(1:36,s3,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250))
+plot(1:36,s4,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250))
+plot(1:36,s5,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250))
 
 
-# Selecting variables
-model_var <- c("Height.m", "Weight.kg", "IMC")
-
-
-# Calculating IMC
-dataset_2016[,'IMC'] = dataset_2016[,'Weight.kg'] / (dataset_2016[,'Height.m'])^2
-dataset_2017[,'IMC'] = dataset_2017[,'Weight.kg'] / (dataset_2017[,'Height.m'])^2
-
-
-# Selecting PPGEE students
-PPGEE_2016students <- dataset_2016[which(dataset_2016$Course == 'PPGEE'), ]
-
-
-# Male students
-male_students2016 <- PPGEE_2016students[which(PPGEE_2016students$Gender == 'M'), ]
-male_students2017 <- dataset_2017[which(dataset_2017$Gender == 'M'), ]
-
-
-# Female students
-female_students2016 <- PPGEE_2016students[which(PPGEE_2016students$Gender == 'F'), ]
-female_students2017 <- dataset_2017[which(dataset_2017$Gender == 'F'), ]
-
-
-# Experiment dataset - Male x Female IMC
-male_students <- rbind(male_students2016[model_var], male_students2017[model_var])
-female_students <- rbind(female_students2016[model_var], female_students2017[model_var])
+# Plot time series (automatic axis)
+plot(1:36,s1,xlab = 'Mês',ylab = 'Valor da Ação')
+plot(1:36,s2,xlab = 'Mês',ylab = 'Valor da Ação')
+plot(1:36,s3,xlab = 'Mês',ylab = 'Valor da Ação')
+plot(1:36,s4,xlab = 'Mês',ylab = 'Valor da Ação')
+plot(1:36,s5,xlab = 'Mês',ylab = 'Valor da Ação')

@@ -1,7 +1,0 @@
-In this test, assuming that the variance in both populations are equal,
-
-```{r results='hold'}
-FvsM <- stack(list(Female=female_students$IMC, Male=male_students$IMC))
-t.test(values~ind,FvsM, var.equal = TRUE)
-```
-Given that the p-value of the two sample t-test resulted in $\alpha > 0.0006349$, the $H_0$ is rejected. Therefore, the means in both populations are different with a 95% confidence level.
