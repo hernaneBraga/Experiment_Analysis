@@ -1,0 +1,6 @@
+```{r stats, results='hide'}
+
+df.a
+
+
+```

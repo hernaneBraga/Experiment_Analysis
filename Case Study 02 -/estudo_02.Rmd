@@ -33,7 +33,9 @@ output:
 ```{r, child=c('blocks/04_exploratory_analysis.Rmd')}
 
 ```
+```{r, child=c('blocks/041_exploratory_analysis.Rmd')}
 
+```
 
 
 # Conferindo presunções dos modelos
