@@ -57,29 +57,29 @@ A partir destas cinco novas séries de valores percentuais, os dados também for
 - **Longo prazo:** ações dos últimos 2 anos (24 meses);
 
 
-```{r short_term, results='hide'}
+```{r long_term, results='hide'}
 
 total_months = length(sp1)
 
-sp1_short <- sp1[13:total_months]
-sp2_short <- sp2[13:total_months]
-sp3_short <- sp3[13:total_months]
-sp4_short <- sp4[13:total_months]
-sp5_short <- sp5[13:total_months]
+sp1_long <- sp1[13:total_months]
+sp2_long <- sp2[13:total_months]
+sp3_long <- sp3[13:total_months]
+sp4_long <- sp4[13:total_months]
+sp5_long <- sp5[13:total_months]
 
 
 ```
 
 
-```{r long_term, results='hide'}
+```{r short_term, results='hide'}
 
 total_months = length(sp1)
 
-sp1_long <- sp1[(total_months-5):total_months]
-sp2_long <- sp2[(total_months-5):total_months]
-sp3_long <- sp3[(total_months-5):total_months]
-sp4_long <- sp4[(total_months-5):total_months]
-sp5_long <- sp5[(total_months-5):total_months]
+sp1_short <- sp1[(total_months-5):total_months]
+sp2_short <- sp2[(total_months-5):total_months]
+sp3_short <- sp3[(total_months-5):total_months]
+sp4_short <- sp4[(total_months-5):total_months]
+sp5_short <- sp5[(total_months-5):total_months]
 
 
 ```
