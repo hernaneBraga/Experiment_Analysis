@@ -40,7 +40,7 @@ legend(31.7,0.052,leg.txt[1],pch = "o", col = c('blue'), cex =0.8)
 
 No gráfico acima é possível observar que quase todas as variações mensais sofridas pela Ação 1 são positivas, com exceção de apenas uma, indicando seu crescimento contínuo. Assim, é possível corroborar a análise descritiva da série temporal.
 
-```{r ptime_plot1, results='hide'}
+```{r ptime_plot2, results='hide'}
 
 # Plot percentage time series (fixed axis)
 plot(1:35,sp2,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c(0,35),ylim = c(-0.05,0.05),col = 'red',type = 'b')
@@ -50,7 +50,7 @@ legend(31.7,0.052,leg.txt[2],pch = "o", col = c('red'), cex =0.8)
 
 Pelo gráfico da variação da Ação 2 é possível inferir que a maioria das variações sofridas são negativas e, apesar de ocorrer algumas variações positivas, estas apresentam magnitude significativamente menor. Por isto, a Ação 2 apresenta tendência de decrescimento como descrito anteriormente.
 
-```{r ptime_plot1, results='hide'}
+```{r ptime_plot3, results='hide'}
 
 # Plot percentage time series (fixed axis)
 plot(1:35,sp3,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c(0,35),ylim = c(-0.05,0.05),col = 'orange',type = 'b')
@@ -60,7 +60,7 @@ legend(31.7,0.052,leg.txt[3],pch = "o", col = c('orange'), cex =0.8)
 
 Assim como a Ação 1, a Ação 3 apresenta apenas variações majoritariamente positivas com apenas uma exceção. Contudo, a Ação 1 atinge variações mais altas o que indica que seu crescimento é maior.
 
-```{r ptime_plot1, results='hide'}
+```{r ptime_plot4, results='hide'}
 
 # Plot percentage time series (fixed axis)
 plot(1:35,sp4,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c(0,35),ylim = c(-0.05,0.05),col = 'purple',type = 'b')
@@ -70,7 +70,7 @@ legend(31.7,0.052,leg.txt[4],pch = "o", col = c('purple'), cex =0.8)
 
 Uma análise do gráfico acima permite concluir que a variação percentual mensal da Ação 4 tende a decrescer a cada mês. Assim, é possível inferir que mesmo a Ação apresentando uma leve valorização na análise dos valores brutos, é possível que a empresa comece a sofrer desvalorização.
 
-```{r ptime_plot1, results='hide'}
+```{r ptime_plot5, results='hide'}
 
 # Plot percentage time series (fixed axis)
 plot(1:35,sp5,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c(0,35),ylim = c(-0.05,0.05),col = 'dark green',type = 'b')
