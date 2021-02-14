@@ -1,11 +1,15 @@
+## Ações nos últimos 3 anos
+
 ```{r time_plots, results='hide'}
 
 # Plot time series (fixed axis)
 plot(1:36,s1,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250),col = 'blue',type = 'b')
+
 lines(1:36,s2,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250),col = 'red',type = 'b')
 lines(1:36,s3,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250),col = 'orange',type = 'b')
 lines(1:36,s4,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250),col = 'purple',type = 'b')
 lines(1:36,s5,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,250),col = 'dark green',type = 'b')
+
 leg.txt <- c("Ação 1","Ação 2","Ação 3","Ação 4","Ação 5")
 legend(-0.7,259,leg.txt,pch = "oooo", col = c('blue','red','orange','purple','darkgreen'), cex =0.8)
 
@@ -21,8 +25,8 @@ As Ações 2, 4 e 5 podem ser analisadas mais detalhadamente na figura a seguir.
 plot(1:36,s2,xlab = 'Mês',ylab = 'Valor da Ação',xlim = c(0,36),ylim = c(0,25),col = 'red',type = 'b')
 lines(1:36,s4,xlab = 'Mês',ylab = 'Valor da Ação',col = 'purple',type = 'b')
 lines(1:36,s5,xlab = 'Mês',ylab = 'Valor da Ação',col = 'dark green',type = 'b')
-leg.txt <- c("Ação 1","Ação 2","Ação 3","Ação 4","Ação 5")
-legend(32.7,5.2,leg.txt,pch = "oooo", col = c('blue','red','orange','purple','darkgreen'), cex =0.8)
+leg.txt <- c("Ação 2","Ação 4","Ação 5")
+legend(32.7,5.2,leg.txt,pch = "oooo", col = c('red','purple','darkgreen'), cex =0.8)
 
 ```
 
@@ -32,11 +36,16 @@ Uma outra forma de analisar o comportamento das ações é verificar a variaçã
 
 ```{r ptime_plot1, results='hide'}
 
+
+leg.txt <- c("Ação 1", "Ação 2", "Ação 3", "Ação 4","Ação 5")
+
 # Plot percentage time series (fixed axis)
 plot(1:35,sp1,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c(0,35),ylim = c(-0.05,0.05),col = 'blue',type = 'b')
 legend(31.7,0.052,leg.txt[1],pch = "o", col = c('blue'), cex =0.8)
 
+
 ```
+
 
 No gráfico acima é possível observar que quase todas as variações mensais sofridas pela Ação 1 são positivas, com exceção de apenas uma, indicando seu crescimento contínuo. Assim, é possível corroborar a análise descritiva da série temporal.
 
@@ -47,6 +56,7 @@ plot(1:35,sp2,xlab = 'Mês',ylab = 'Percentual de Variação da Ação',xlim = c
 legend(31.7,0.052,leg.txt[2],pch = "o", col = c('red'), cex =0.8)
 
 ```
+
 
 Pelo gráfico da variação da Ação 2 é possível inferir que a maioria das variações sofridas são negativas e, apesar de ocorrer algumas variações positivas, estas apresentam magnitude significativamente menor. Por isto, a Ação 2 apresenta tendência de decrescimento como descrito anteriormente.
 
