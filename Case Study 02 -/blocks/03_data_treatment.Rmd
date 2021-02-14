@@ -1,3 +1,16 @@
+Os dados disponibilizados contém o preço de cada ação do mês mais recente, para o mais antigo. Para realizar a análise exploratória as seguintes operações foram realizadas:
+
+1. Inversão da disposição de dados;
+2. Cálculo da variação percentual de cada ação; 
+
+A ordem dos dados foi invertida, onde os valores antigos estão no início da série e os recentes no final.
+
+Para realização dos experimentos foi calculado o percentual de variação mensal usando a fórmula:
+
+$\Delta_m = \frac{V_m - V_{m-1}}{V_{m-1}}$
+
+Onde $V_m$ é o valor da ação no mês atual e $V_{m-1}$ o valor da ação no mês anterior.
+
 ```{r loaddata, results='hide'}
 # Function to convert absolute values on series to percentual
 abs_serie_to_perct <- function(serie) {
@@ -38,7 +51,10 @@ sp5 <- abs_serie_to_perct(s5)
 
 ```
 
+A partir destas cinco novas séries de valores percentuais, os dados também foram dividos em análises para o investidor de longo e curto prazo.
 
+- **Curto prazo:** ações dos últimos 6 meses;
+- **Longo prazo:** ações dos últimos 2 anos (24 meses);
 
 
 ```{r short_term, results='hide'}
