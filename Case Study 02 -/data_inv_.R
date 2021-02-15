@@ -205,7 +205,7 @@ pp12 <- ap12$`Pr(>F)`;
 # Ação 1 e 3
 Xp13 <- rep(c("A1","A3"),each=35);
 Yp13 <- c(sp1,sp3);
-dataDp13 <- data.frame(Y13,X13);
+dataDp13 <- data.frame(Yp13,Xp13);
 anovaDp13 <- aov(Yp13 ~ Xp13, data= dataDp13)
 summary(anovaDp13)
 ap13 <- anova(anovaDp13);
