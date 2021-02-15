@@ -46,6 +46,26 @@ sp3_short <- sp3[(total_months-5):total_months]
 sp4_short <- sp4[(total_months-5):total_months]
 sp5_short <- sp5[(total_months-5):total_months]
 
+# Assign volatility indicator for each series
+if (!require('TTR', character.only = TRUE)) {
+  install.packages('TTR', dependencies = TRUE)
+  library('TTR', character.only = TRUE)
+}
+sv1 <- volatility(s1,n=6,calc="close")
+sv1 <- sv1[!is.na(sv1)]
+
+sv2 <- volatility(s2,n=6,calc="close")
+sv2 <- sv2[!is.na(sv2)]
+
+sv3 <- volatility(s3,n=6,calc="close")
+sv3 <- sv3[!is.na(sv3)]
+
+sv4 <- volatility(s4,n=6,calc="close")
+sv4 <- sv4[!is.na(sv4)]
+
+sv5 <- volatility(s5,n=6,calc="close")
+sv5 <- sv5[!is.na(sv5)]
+
 ################################
 ######### Análise Anova ########
 ################################
@@ -161,16 +181,22 @@ for(i in 1:10){
 }
 # Resultou em médias iguais para 2-5, 1-3, 2-4 e 4-5
 
+library(multcomp)
+anovaDp$model$Xp = as.factor(Xp)
+mc1 <- glht(anovaDp, linfct = mcp(Xp = "Tukey"))
+mc1_a <- confint(mc1,level = 0.95)
+plot(mc1_a)
+
 ####################################################
 ####################################################
 
-# 5 Ações Variação Percentual Curto Prazo
+# 5 Ações Variação Percentual Longo Prazo
 
 Xp <- rep(c("A1","A2","A3","A4","A5"),each=length(sp1_long));
 Yp <- c(sp1_long,sp2_long,sp3_long,sp4_long,sp5_long);
 dataDp <- data.frame(Yp,Xp);
 
-anovaDp <- lm(Yp ~ Xp, data= dataDp)
+anovaDp <- aov(Yp ~ Xp, data= dataDp)
 summary(anovaDp)
 anova(anovaDp) # Pelo Pvalue, as médias são diferentes (?)
 with(dataDp,tapply(Yp,Xp,mean)) # mostra a média de cada população
@@ -277,3 +303,129 @@ for(i in 1:10){
 # Resultou em médias iguais para 4-5, 1-3, 2-4 e 2-5
 
 
+library(multcomp)
+anovaDp$model$Xp = as.factor(Xp)
+mc1 <- glht(anovaDp, linfct = mcp(Xp = "Tukey"))
+mc1_a <- confint(mc1,level = 0.95)
+plot(mc1_a)
+
+####################################################
+####################################################
+
+# Volatilidade
+
+X <- rep(c("A1","A2","A3","A4","A5"),each=length(sv1));
+Y <- c(sv1,sv2,sv3,sv4,sv5);
+dataV <- data.frame(Y,X);
+
+anovaV <- aov(Y ~ X, data= dataV)
+summary(anovaV)
+anova(anovaV) # Pelo Pvalue, as médias são diferentes (?)
+with(dataV,tapply(Y,X,mean)) # mostra a média de cada população
+
+# Será Realizado o Procedimento de Benjamini-Hochberg
+# Ação 1 e 2
+X12 <- rep(c("A1","A2"),each=length(sv1));
+Y12 <- c(sv1,sv2);
+dataV12 <- data.frame(Y12,X12);
+anovaV12 <- aov(Y12 ~ X12, data= dataV12)
+summary(anovaV12)
+a12 <- anova(anovaV12);
+p12 <- a12$`Pr(>F)`;
+
+# Ação 1 e 3
+X13 <- rep(c("A1","A3"),each=length(sv1));
+Y13 <- c(sv1,sv3);
+dataV13 <- data.frame(Y13,X13);
+anovaV13 <- aov(Y13 ~ X13, data= dataV13)
+summary(anovaV13)
+a13 <- anova(anovaV13);
+p13 <- a13$`Pr(>F)`;
+
+# Ação 1 e 4
+X14 <- rep(c("A1","A4"),each=length(sv1));
+Y14 <- c(sv1,sv4);
+dataV14 <- data.frame(Y14,X14);
+anovaV14 <- aov(Y14 ~ X14, data= dataV14)
+summary(anovaV14)
+a14 <- anova(anovaV14);
+p14 <- a14$`Pr(>F)`;
+
+# Ação 1 e 5
+X15 <- rep(c("A1","A5"),each=length(sv1));
+Y15 <- c(sv1,sv5);
+dataV15 <- data.frame(Y15,X15);
+anovaV15 <- aov(Y15 ~ X15, data= dataV15)
+summary(anovaV15)
+a15 <- anova(anovaV15);
+p15 <- a15$`Pr(>F)`;
+
+# Ação 2 e 3
+X23 <- rep(c("A2","A3"),each=length(sv1));
+Y23 <- c(sv2,sv3);
+dataV23 <- data.frame(Y23,X23);
+anovaV23 <- aov(Y23 ~ X23, data= dataV23)
+summary(anovaV23)
+a23 <- anova(anovaV23);
+p23 <- a23$`Pr(>F)`;
+
+# Ação 2 e 4
+X24 <- rep(c("A2","A4"),each=length(sv1));
+Y24 <- c(sv2,sv4);
+dataV24 <- data.frame(Y24,X24);
+anovaV24 <- aov(Y24 ~ X24, data= dataV24)
+summary(anovaV24)
+a24 <- anova(anovaV24);
+p24 <- a24$`Pr(>F)`;
+
+# Ação 2 e 5
+X25 <- rep(c("A2","A5"),each=length(sv1));
+Y25 <- c(sv2,sv5);
+dataV25 <- data.frame(Y25,X25);
+anovaV25 <- aov(Y25 ~ X25, data= dataV25)
+summary(anovaV25)
+a25 <- anova(anovaV25);
+p25 <- a25$`Pr(>F)`;
+
+# Ação 3 e 4
+X34 <- rep(c("A3","A4"),each=length(sv1));
+Y34 <- c(sv3,sv4);
+dataV34 <- data.frame(Y34,X34);
+anovaV34 <- aov(Y34 ~ X34, data= dataV34)
+summary(anovaV34)
+a34 <- anova(anovaV34);
+p34 <- a34$`Pr(>F)`;
+
+# Ação 3 e 5
+X35 <- rep(c("A3","A5"),each=length(sv1));
+Y35 <- c(sv3,sv5);
+dataV35 <- data.frame(Y35,X35);
+anovaV35 <- aov(Y35 ~ X35, data= dataV35)
+summary(anovaV35)
+a35 <- anova(anovaV35);
+p35 <- a35$`Pr(>F)`;
+
+# Ação 4 e 5
+X45 <- rep(c("A4","A5"),each=length(sv1));
+Y45 <- c(sv4,sv5);
+dataV45 <- data.frame(Y45,X45);
+anovaV45 <- aov(Y45 ~ X45, data= dataV45)
+summary(anovaV45)
+a45 <- anova(anovaV45);
+p45 <- a45$`Pr(>F)`;
+
+# Método B-H Volatilidade
+PV <- sort(c(p12,p13,p14,p15,p23,p24,p25,p34,p35,p45))
+alfaV <- 1:10*(0.05/10)
+BHV <- 0
+for(i in 1:10){ 
+  BHV[i] <- (PV[i] < alfaV[i]) 
+}
+
+# Médias iguais: 1-3, 4-5, 2-4, 2-5, 1-5
+
+library(multcomp)
+anovaV$model$X = as.factor(X)
+mcV <- glht(anovaV, linfct = mcp(X = "Tukey"))
+mcV_a <- confint(mcV,level = 0.95)
+plot(mcV_a)

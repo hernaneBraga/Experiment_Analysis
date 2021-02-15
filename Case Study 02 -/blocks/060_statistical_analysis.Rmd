@@ -1,0 +1,153 @@
+Para verificar qual ação é mais vantajosa a curto prazo, as médias das variações percentuais são comparadas para verificar se há diferença estatística entre elas. Isto é feito por meio do teste Anova.
+
+```{r anova_tcp, results='hide'}
+
+# 5 Ações Variação Percentual Curto Prazo
+
+Xp <- rep(c("A1","A2","A3","A4","A5"),each=length(sp1_short));
+Yp <- c(sp1_short,sp2_short,sp3_short,sp4_short,sp5_short);
+dataDp <- data.frame(Yp,Xp);
+
+anovaDp <- lm(Yp ~ Xp, data= dataDp)
+summary(anovaDp)
+anova(anovaDp)
+with(dataDp,tapply(Yp,Xp,mean)) # Exibe a média de cada população
+
+
+```
+
+Pelos p-valor obtido é possível inferir que possui ao menos uma amostra que possui média diferente das demais. As médias amostrais para cada ação também são exibidas acima. Para obter resultados mais específicos, será realizado o teste Anova par a par. Assim, o procedimento de Benjamini-Hochberg é empregado para correção de significância (erro Tipo I).
+
+```{r anova_ppcp, results='hide'}
+
+## Será Realizado o Procedimento de Benjamini-Hochberg
+# Ações 1 e 2
+Xp12 <- rep(c("A1","A2"),each=length(sp1_short));
+Yp12 <- c(sp1_short,sp2_short);
+dataDp12 <- data.frame(Yp12,Xp12);
+anovaDp12 <- aov(Yp12 ~ Xp12, data= dataDp12)
+summary(anovaDp12)
+ap12 <- anova(anovaDp12);
+pp12 <- ap12$`Pr(>F)`;
+
+# Ações 1 e 3
+Xp13 <- rep(c("A1","A3"),each=length(sp1_short));
+Yp13 <- c(sp1_short,sp3_short);
+dataDp13 <- data.frame(Yp13,Xp13);
+anovaDp13 <- aov(Yp13 ~ Xp13, data= dataDp13)
+summary(anovaDp13)
+ap13 <- anova(anovaDp13);
+pp13 <- ap13$`Pr(>F)`;
+
+# Ações 1 e 4
+Xp14 <- rep(c("A1","A4"),each=length(sp1_short));
+Yp14 <- c(sp1_short,sp4_short);
+dataDp14 <- data.frame(Yp14,Xp14);
+anovaDp14 <- aov(Yp14 ~ Xp14, data= dataDp14)
+summary(anovaDp14)
+ap14 <- anova(anovaDp14);
+pp14 <- ap14$`Pr(>F)`;
+
+# Ações 1 e 5
+Xp15 <- rep(c("A1","A5"),each=length(sp1_short));
+Yp15 <- c(sp1_short,sp5_short);
+dataDp15 <- data.frame(Yp15,Xp15);
+anovaDp15 <- aov(Yp15 ~ Xp15, data= dataDp15)
+summary(anovaDp15)
+ap15 <- anova(anovaDp15);
+pp15 <- ap15$`Pr(>F)`;
+
+# Ações 2 e 3
+Xp23 <- rep(c("A2","A3"),each=length(sp1_short));
+Yp23 <- c(sp2_short,sp3_short);
+dataDp23 <- data.frame(Yp23,Xp23);
+anovaDp23 <- aov(Yp23 ~ Xp23, data= dataDp23)
+summary(anovaDp23)
+ap23 <- anova(anovaDp23);
+pp23 <- ap23$`Pr(>F)`;
+
+# Ações 2 e 4
+Xp24 <- rep(c("A2","A4"),each=length(sp1_short));
+Yp24 <- c(sp2_short,sp4_short);
+dataDp24 <- data.frame(Yp24,Xp24);
+anovaDp24 <- aov(Yp24 ~ Xp24, data= dataDp24)
+summary(anovaDp24)
+ap24 <- anova(anovaDp24);
+pp24 <- ap24$`Pr(>F)`;
+
+# Ações 2 e 5
+Xp25 <- rep(c("A2","A5"),each=length(sp1_short));
+Yp25 <- c(sp2_short,sp5_short);
+dataDp25 <- data.frame(Yp25,Xp25);
+anovaDp25 <- aov(Yp25 ~ Xp25, data= dataDp25)
+summary(anovaDp25)
+ap25 <- anova(anovaDp25);
+pp25 <- ap25$`Pr(>F)`;
+
+# Ações 3 e 4
+Xp34 <- rep(c("A3","A4"),each=length(sp1_short));
+Yp34 <- c(sp3_short,sp4_short);
+dataDp34 <- data.frame(Yp34,Xp34);
+anovaDp34 <- aov(Yp34 ~ Xp34, data= dataDp34)
+summary(anovaDp34)
+ap34 <- anova(anovaDp34);
+pp34 <- ap34$`Pr(>F)`;
+
+# Ações 3 e 5
+Xp35 <- rep(c("A3","A5"),each=length(sp1_short));
+Yp35 <- c(sp3_short,sp5_short);
+dataDp35 <- data.frame(Yp35,Xp35);
+anovaDp35 <- aov(Yp35 ~ Xp35, data= dataDp35)
+summary(anovaDp35)
+ap35 <- anova(anovaDp35);
+pp35 <- ap35$`Pr(>F)`;
+
+# Ações 4 e 5
+Xp45 <- rep(c("A4","A5"),each=length(sp1_short));
+Yp45 <- c(sp4_short,sp5_short);
+dataDp45 <- data.frame(Yp45,Xp45);
+anovaDp45 <- aov(Yp45 ~ Xp45, data= dataDp45)
+summary(anovaDp45)
+ap45 <- anova(anovaDp45);
+pp45 <- ap45$`Pr(>F)`;
+
+# Procedimento B-H
+PDp <- sort(c(pp12,pp13,pp14,pp15,pp23,pp24,pp25,pp34,pp35,pp45)) # Ordenar os dados
+alfaDp <- 1:10*(0.05/10) #K*alfa/m
+BHDp <- 0
+for(i in 1:10){ 
+  BHDp[i] <- (PDp[i] < alfaDp[i]) 
+}
+
+```
+
+O procedimento de Benjamini-Hochberg indica que não é possível rejeitar a hipótese nula, com 95% de confiança, para os pares 1-3, 2-5, 2-4 e 4-5. Assim é possível inferir que existem dois grupos cujos integrantes possuem médias estatisticamente iguais. Isto é corroborado pelo gráfico do teste de Tukey apresentado abaixo:
+
+```{r anova_tukeycp, results='hide'}
+
+library(multcomp)
+anovaDp$model$Xp = as.factor(Xp)
+mc1 <- glht(anovaDp, linfct = mcp(Xp = "Tukey"))
+mc1_a <- confint(mc1,level = 0.95)
+plot(mc1_a)
+
+```
+
+Os valores das médias amostrais apresentados anteriormente permitem concluir que o grupo composto pelas Ações 1 e 3 apresenta tendência de crescimento a curto prazo enquanto o outro grupo apresenta ações com tendência de estagnação ou de desvalorização.
+
+A seguir a análise Anova é realizada para uma perspectiva de investimento a longo prazo, ou seja, é verificado se há diferença significativa entre as médias das variações percentuais.
+
+```{r anova_tlp, results='hide'}
+
+# 5 Ações Variação Percentual Longo Prazo
+
+Xp <- rep(c("A1","A2","A3","A4","A5"),each=length(sp1_long));
+Yp <- c(sp1_long,sp2_long,sp3_long,sp4_long,sp5_long);
+dataDp <- data.frame(Yp,Xp);
+
+anovaDp <- aov(Yp ~ Xp, data= dataDp)
+summary(anovaDp)
+anova(anovaDp) 
+with(dataDp,tapply(Yp,Xp,mean)) # Exibe a média de cada população
+
+```
