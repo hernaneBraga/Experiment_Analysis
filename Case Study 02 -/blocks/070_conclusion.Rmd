@@ -2,6 +2,6 @@ O fluxograma abaixo sintetiza as análises elaborada neste estudo de caso. Nele,
 
 Em relação à volatilidade não houve diferença estatística entre as duas opções e ambas são consideradas ações de baixa volatilidade, podendo ser escolhidas tanto por investidores conservadores quanto arrojados.
 
-O critério final de escolha é em relação ao preço do ativo, pois ambas possuem a mesma taxa de crescimento. Recomenda-se 
+O critério final de escolha é em relação ao preço do ativo, pois ambas possuem a mesma média de crescimento. Portanto, recomenda-se a compra da ação 1 pois ela possui o menor preço e será possível comprar uma quantidade maior de ações que se valorizarão futuramente.
 
 ![fluxograma](src/fluxogram_case02.png)
