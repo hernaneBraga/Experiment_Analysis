@@ -89,18 +89,18 @@ if (!require('TTR', character.only = TRUE)) {
       install.packages('TTR', dependencies = TRUE)
       library('TTR', character.only = TRUE)
 }
-sv1 <- volatility(s1,n=6,calc="close")
+sv1 <- volatility(s1,n=6, N=12,calc="close")
 sv1 <- sv1[!is.na(sv1)]
 
-sv2 <- volatility(s2,n=6,calc="close")
+sv2 <- volatility(s2,n=6,N=12,calc="close")
 sv2 <- sv2[!is.na(sv2)]
 
-sv3 <- volatility(s3,n=6,calc="close")
+sv3 <- volatility(s3,n=6,N=12,calc="close")
 sv3 <- sv3[!is.na(sv3)]
 
-sv4 <- volatility(s4,n=6,calc="close")
+sv4 <- volatility(s4,n=6,N=12,calc="close")
 sv4 <- sv4[!is.na(sv4)]
 
-sv5 <- volatility(s5,n=6,calc="close")
+sv5 <- volatility(s5,n=6,N=12,calc="close")
 sv5 <- sv5[!is.na(sv5)]
 ```

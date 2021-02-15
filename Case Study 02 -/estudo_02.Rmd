@@ -45,6 +45,7 @@ output:
 
 ```
 
+
 # Análise estatística
 ```{r, child=c('blocks/060_statistical_analysis.Rmd')}
 
