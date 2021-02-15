@@ -1,8 +1,18 @@
-Neste estudo de caso, um investidor coletou o preço de fechamento de cinco ações nos últimos 36 meses com a finalidade de escolher uma delas para investir todo o seu capital e alcançar a maior rentabilidade no mês seguinte. Como não estão disponíveis informações relevantes como nome das empresas, segmentos de atuação e outros fatos relevantes, serão utilizados apenas os valores da ação de cada mês para se recomendar uma ação.
+A fim de atuar nos três fatores citados, quatro cenários foram construídos a fim de melhor estudar os dados ([tabela 1](#tabela_1)):
 
-Para gerar a recomendação final os seguintes fatores serão analisados:
+<a id="tabela1"></a>
 
-1. Volatilidade das ações;
-2. Tendências de crescimento e queda no longo prazo;
-3. Tendências de crescimento e queda no curto prazo;
+|| Longo Prazo | Curto Prazo |
+|------------:|:------------|:------------|
+| _Conservador_  | Baixa volatividade<br>Valorização dos preços nos últimos 2 anos| Baixa volatividade<br>Valorização dos preços nos últimos 6 meses |
+| _Arrojado_     | Disposto a assumir alta volatividade<br>Valorização dos preços nos últimos 2 anos| Disposto a assumir alta volatividade<br>Valorização dos preços nos últimos 6 meses |
 
+A partir disso, as seguintes hipóteses são construídas:
+
+## Hipotese 1: Baixa volatividade das ações
+A fim de testar o quão volátil são os valores das ações, realiza-se um teste sobre os dados de cada empresa quanto à variação de seus fechamentos. Para realizar tal análise, será utilizado o indicador de volatividade de fechamento a fechamento [[1](https://web.archive.org/web/20100421083157/http://www.sitmo.com/eq/172)] com uma janela de 6 meses. Para considerar que uma ação tem baixa volatividade, a média do indicador de volatividade não pode ultrapassar 15%.
+
+## Hipotese 2: Valoriação positiva dos preços em 2 anos
+Com o objetivo de observar uma valorização das empresas, procura-se realizar um teste para avaliar se as ações estão em alta, baixa ou estagnadas. No caso, como o objetivo é indicar ações para se investir, a valorização positiva é almejada. Além disso, procura-se atender o caso de longo prazo, em que se estuda os valores nos dois anos mais recentes. Para esta análise será utilizada o percentual de valorização mensal. Assim, para considerar que uma ação está com valorização positiva, a média deve ser positiva.
+
+## Hipotese 3: Valoriação positiva dos preços em 6 meses
