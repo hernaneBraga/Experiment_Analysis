@@ -67,7 +67,6 @@ sp3_long <- sp3[13:total_months]
 sp4_long <- sp4[13:total_months]
 sp5_long <- sp5[13:total_months]
 
-
 ```
 
 
@@ -80,6 +79,21 @@ sp2_short <- sp2[(total_months-5):total_months]
 sp3_short <- sp3[(total_months-5):total_months]
 sp4_short <- sp4[(total_months-5):total_months]
 sp5_short <- sp5[(total_months-5):total_months]
+```
 
+Por fim, utiliza-se o indicador de volatividade para criar uma outra série de dados
 
+```{r volatility_indicator, results='hide'}
+# Assign volatility indicator for each series
+library("TTR")
+sv1 <- volatility(s1,n=6,calc="close")
+sv1 <- sv1[!is.na(sv1)]
+sv2 <- volatility(s2,n=6,calc="close")
+sv2 <- sv2[!is.na(sv2)]
+sv3 <- volatility(s3,n=6,calc="close")
+sv3 <- sv3[!is.na(sv3)]
+sv4 <- volatility(s4,n=6,calc="close")
+sv4 <- sv4[!is.na(sv4)]
+sv5 <- volatility(s5,n=6,calc="close")
+sv5 <- sv5[!is.na(sv5)]
 ```
