@@ -89,14 +89,3 @@ legend(31.7,0.052,leg.txt[5],pch = "o", col = c('dark green'), cex =0.8)
 ```
 
 O gráfico da variação percentual mensal da Ação 5 permite corroborar a análise anterior de forma que para quase todas as variações positivas parece haver uma contrapartida negativa. Assim, a empresa permanece estagnada. Contudo, também é possível observar que quase em todos os meses em que a variação decresce, há um aumento da valorização no mês subsequente. Esta informação pode ser favorável caso pretenda-se investir a curto prazo.
-
-#########################################
-
-Populações são consideradas independentes por assumirmos que as empresas em estudo advêm de diferentes organizações e que elas não interagem entre si (?).
-
-
-```{r anova_analisys, results='hide'}
-
-
-
-```

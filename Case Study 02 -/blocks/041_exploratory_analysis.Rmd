@@ -1,5 +1,7 @@
 ## Comparação entre curto e longo prazo
 
+O boxplot abaixo denmonstra a variação percentual no preço de cada ação tanto para a janela de análise de longo prazo (2 anos), quanto para curto prazo (6 meses). Nota-se que apenas as ações 1 e 3 possuem suas distribibuições acima de zero, exceto por um único outlier negativo.
+
 
 
 ```{r prep_boxplot, results='hide'}
