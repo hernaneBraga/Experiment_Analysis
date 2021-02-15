@@ -117,8 +117,8 @@ for(i in 1:10){
 }
 
 print(BHDp) # FALSE indica que não é possível rejeitar a Hipótese Nula
-print(order(c(pp12[1],pp13[1],pp14[1],pp15[1],pp23[1],pp24[1],pp25[1],pp34[1],pp35[1],pp45[1]))) 
 # Ordem para identificar quais foram as comparações que resultaram em FALSE
+print(order(c(pp12[1],pp13[1],pp14[1],pp15[1],pp23[1],pp24[1],pp25[1],pp34[1],pp35[1],pp45[1]))) 
 ```
 
 O procedimento de Benjamini-Hochberg indica que não é possível rejeitar a hipótese nula, com 95% de confiança, para os pares 1-3, 2-5, 2-4 e 4-5. Assim é possível inferir que existem dois grupos cujos integrantes possuem médias estatisticamente iguais. Isto é corroborado pelo gráfico do teste de Tukey apresentado abaixo:
@@ -157,9 +157,7 @@ Yp <- c(sp1_long,sp2_long,sp3_long,sp4_long,sp5_long);
 dataDp <- data.frame(Yp,Xp);
 
 anovaDp <- aov(Yp ~ Xp, data= dataDp)
-summary(anovaDp)
-anova(anovaDp) 
-with(dataDp,tapply(Yp,Xp,mean)) # Exibe a média de cada população
+anova(anovaDp)
 
 ```
 
@@ -266,7 +264,164 @@ for(i in 1:10){
   BHDp[i] <- (PDp[i] < alfaDp[i]) 
 }
 
-# Resultou em médias iguais para 4-5, 1-3, 2-4 e 2-5
+print(BHDp) # FALSE indica que não é possível rejeitar a Hipótese Nula
+# Ordem para identificar quais foram as comparações que resultaram em FALSE
+print(order(c(pp12[1],pp13[1],pp14[1],pp15[1],pp23[1],pp24[1],pp25[1],pp34[1],pp35[1],pp45[1]))) 
 
+```
 
+O procedimento de Benjamini-Hochberg indica que não é possível rejeitar a hipótese nula, com 95% de confiança, para os pares 4-5, 1-3, 2-4 e 2-5. Novamente é possível inferir que existem dois grupos cujos integrantes possuem médias estatisticamente iguais como é possível visualizar no gráfico do teste de Tukey abaixo:
+
+```{r anova_tukeylp}
+
+anovaDp$model$Xp = as.factor(Xp)
+mc1 <- glht(anovaDp, linfct = mcp(Xp = "Tukey"))
+mc1_a <- confint(mc1,level = 0.95)
+plot(mc1_a)
+
+```
+
+Os valores das médias amostrais são apresentados a seguir. É possível observar que o grupo composto pelas Ações 1 e 3 apresenta tendência de crescimento também a longo prazo enquanto o outro grupo apresenta ações com tendência de estagnação ou de desvalorização.
+
+```{r media_lp}
+
+with(dataDp,tapply(Yp,Xp,mean)) # Exibe a média de cada amostra
+```
+
+A seguir é feita a análise da volatilidade das ações. Por meio do teste Anova, as médias dos índices de volatilidade são comparadas para verificar se há diferença estatística entre elas.
+
+```{r anova_v}
+
+# Volatilidade
+X <- rep(c("A1","A2","A3","A4","A5"),each=length(sv1));
+Y <- c(sv1,sv2,sv3,sv4,sv5);
+dataV <- data.frame(Y,X);
+anovaV <- aov(Y ~ X, data= dataV)
+anova(anovaV)
+
+```
+
+Pelo p-valor obtido indica que ao menos uma amostra possui média diferente das demais. Para obter resultados mais específicos, será realizado o teste Anova par a par. Assim, o procedimento de Benjamini-Hochberg é empregado para correção de significância (erro Tipo I).
+
+```{r anova_ppv}
+
+# Será Realizado o Procedimento de Benjamini-Hochberg
+# Ação 1 e 2
+X12 <- rep(c("A1","A2"),each=length(sv1));
+Y12 <- c(sv1,sv2);
+dataV12 <- data.frame(Y12,X12);
+anovaV12 <- aov(Y12 ~ X12, data= dataV12)
+a12 <- anova(anovaV12);
+p12 <- a12$`Pr(>F)`;
+summary(anovaV12)
+
+# Ação 1 e 3
+X13 <- rep(c("A1","A3"),each=length(sv1));
+Y13 <- c(sv1,sv3);
+dataV13 <- data.frame(Y13,X13);
+anovaV13 <- aov(Y13 ~ X13, data= dataV13)
+a13 <- anova(anovaV13);
+p13 <- a13$`Pr(>F)`;
+summary(anovaV13)
+
+# Ação 1 e 4
+X14 <- rep(c("A1","A4"),each=length(sv1));
+Y14 <- c(sv1,sv4);
+dataV14 <- data.frame(Y14,X14);
+anovaV14 <- aov(Y14 ~ X14, data= dataV14)
+a14 <- anova(anovaV14);
+p14 <- a14$`Pr(>F)`;
+summary(anovaV14)
+
+# Ação 1 e 5
+X15 <- rep(c("A1","A5"),each=length(sv1));
+Y15 <- c(sv1,sv5);
+dataV15 <- data.frame(Y15,X15);
+anovaV15 <- aov(Y15 ~ X15, data= dataV15)
+a15 <- anova(anovaV15);
+p15 <- a15$`Pr(>F)`;
+summary(anovaV15)
+
+# Ação 2 e 3
+X23 <- rep(c("A2","A3"),each=length(sv1));
+Y23 <- c(sv2,sv3);
+dataV23 <- data.frame(Y23,X23);
+anovaV23 <- aov(Y23 ~ X23, data= dataV23)
+a23 <- anova(anovaV23);
+p23 <- a23$`Pr(>F)`;
+summary(anovaV23)
+
+# Ação 2 e 4
+X24 <- rep(c("A2","A4"),each=length(sv1));
+Y24 <- c(sv2,sv4);
+dataV24 <- data.frame(Y24,X24);
+anovaV24 <- aov(Y24 ~ X24, data= dataV24)
+a24 <- anova(anovaV24);
+p24 <- a24$`Pr(>F)`;
+summary(anovaV24)
+
+# Ação 2 e 5
+X25 <- rep(c("A2","A5"),each=length(sv1));
+Y25 <- c(sv2,sv5);
+dataV25 <- data.frame(Y25,X25);
+anovaV25 <- aov(Y25 ~ X25, data= dataV25)
+a25 <- anova(anovaV25);
+p25 <- a25$`Pr(>F)`;
+summary(anovaV25)
+
+# Ação 3 e 4
+X34 <- rep(c("A3","A4"),each=length(sv1));
+Y34 <- c(sv3,sv4);
+dataV34 <- data.frame(Y34,X34);
+anovaV34 <- aov(Y34 ~ X34, data= dataV34)
+a34 <- anova(anovaV34);
+p34 <- a34$`Pr(>F)`;
+summary(anovaV34)
+
+# Ação 3 e 5
+X35 <- rep(c("A3","A5"),each=length(sv1));
+Y35 <- c(sv3,sv5);
+dataV35 <- data.frame(Y35,X35);
+anovaV35 <- aov(Y35 ~ X35, data= dataV35)
+a35 <- anova(anovaV35);
+p35 <- a35$`Pr(>F)`;
+summary(anovaV35)
+
+# Ação 4 e 5
+X45 <- rep(c("A4","A5"),each=length(sv1));
+Y45 <- c(sv4,sv5);
+dataV45 <- data.frame(Y45,X45);
+anovaV45 <- aov(Y45 ~ X45, data= dataV45)
+a45 <- anova(anovaV45);
+p45 <- a45$`Pr(>F)`;
+summary(anovaV45)
+
+# Método B-H Volatilidade
+PV <- sort(c(p12,p13,p14,p15,p23,p24,p25,p34,p35,p45))
+alfaV <- 1:10*(0.05/10)
+BHV <- 0
+for(i in 1:10){ 
+  BHV[i] <- (PV[i] < alfaV[i]) 
+}
+
+print(BHV) # FALSE indica que não é possível rejeitar a Hipótese Nula
+# Ordem para identificar quais foram as comparações que resultaram em FALSE
+print(order(c(p12[1],p13[1],p14[1],p15[1],p23[1],p24[1],p25[1],p34[1],p35[1],p45[1]))) 
+
+```
+
+O procedimento de Benjamini-Hochberg indica que não é possível rejeitar a hipótese nula, com 95% de confiança, para os pares 1-3, 4-5, 2-4, 2-5 e 1-5. Aqui,  é possível inferir que existem dois grupos cujos integrantes possuem médias estatisticamente iguais. Contudo, eles se sobrepõem de forma que a Ação 5 age como uma interseção entre os dois. Também é possível visualizar isto no gráfico do teste de Tukey abaixo:
+
+```{r tuckey_v}
+anovaV$model$X = as.factor(X)
+mcV <- glht(anovaV, linfct = mcp(X = "Tukey"))
+mcV_a <- confint(mcV,level = 0.95)
+plot(mcV_a)
+```
+
+Os valores das médias amostrais são apresentados a seguir. É possível observar que o grupo composto pelas Ações 1 e 3 apresenta baixa volatilidade, já o grupo composto pelas Ações 2 e 4 possuem volatilidade mais elevada. A Ação 5 apresenta volatilidade moderada quando comparada com as ações dos demais grupos.
+
+```{r media_v}
+
+with(dataV,tapply(Y,X,mean)) # Exibe a média de cada amostra
 ```
