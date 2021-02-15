@@ -1,0 +1,30 @@
+## iid
+
+
+
+## Normalidade
+Para as ações de longo prazo, dos últimos 2 anos:
+
+```{r test1_norm_check}
+
+long_term_df <- cbind(sp1_long,sp2_long,sp3_long,sp4_long,sp5_long)
+short_term_df <- cbind(sp1_short,sp2_short,sp3_short,sp4_short,sp5_short)
+
+result_long = rep(0,5)
+result_short = rep(0,5)
+
+for(i in 1:5) {
+    result_long[i] <- shapiro.test(long_term_df[,i])$p.value #OK
+    result_short[i] <- shapiro.test(short_term_df[,i])$p.value #OK
+  }
+
+
+```
+
+- Male students p-value = `r result_long[1]`  
+
+
+
+
+## Homocedasticidade
+
