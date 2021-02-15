@@ -1,0 +1,7 @@
+O fluxograma abaixo sintetiza as análises elaborada neste estudo de caso. Nele, observa-se que apenas as ações 1 e 3 se valorizaram enquanto as demais foram descartadas de análises mais profundas. Ambas as ações 1 e 3, se valorizaram tanto no período de 2 anos, quanto nos últimos 6 meses, validando sua possível escolha para investidores de curto e longo prazo.
+
+Em relação à volatilidade não houve diferença estatística entre as duas opções e ambas são consideradas ações de baixa volatilidade, podendo ser escolhidas tanto por investidores conservadores quanto arrojados.
+
+O critério final de escolha é em relação ao preço do ativo, pois ambas possuem a mesma taxa de crescimento. Recomenda-se 
+
+![fluxograma](src/fluxogram_case02.png)
