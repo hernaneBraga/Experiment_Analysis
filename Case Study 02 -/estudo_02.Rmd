@@ -33,24 +33,26 @@ output:
 ```{r, child=c('blocks/04_exploratory_analysis.Rmd')}
 
 ```
+
+
 ```{r, child=c('blocks/041_exploratory_analysis.Rmd')}
 
 ```
 
 
 # Conferindo presunções dos modelos
-```#{r, child=c('blocks/05_model_check.Rmd')}
+```{r, child=c('blocks/050_model_check.Rmd')}
 
 ```
 
 # Análise estatística
-```#{r, child=c('blocks/06_statistical_analysis.Rmd')}
+```{r, child=c('blocks/060_statistical_analysis.Rmd')}
 
 ```
 
 
 # Conclusão e recomendação
-```#{r, child=c('blocks/07_conclusion.Rmd')}
+```{r, child=c('blocks/070_conclusion.Rmd')}
 
 ```
 
