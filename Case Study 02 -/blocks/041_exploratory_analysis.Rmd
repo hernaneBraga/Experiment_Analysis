@@ -1,5 +1,47 @@
-```{r stats, results='hide'}
+## Comparação entre curto e longo prazo
 
 
+
+```{r prep_boxplot, results='hide'}
+require(reshape2)
+require(ggplot2)
+
+# Preparing data for plot        
+df_long<-cbind(sp1_long, sp2_long, sp3_long, sp4_long, sp5_long)
+df_short<-cbind(sp1_short, sp2_short, sp3_short, sp4_short, sp5_short)
+
+
+# Melting dataframes
+df_boxplot_long <- melt(df_long)
+df_boxplot_long <- cbind(df_boxplot_long, '2 anos')
+names(df_boxplot_long)[4] <- "Tempo"
+
+
+df_boxplot_short <- melt(df_short)
+df_boxplot_short <- cbind(df_boxplot_short, '6 meses')
+names(df_boxplot_short)[4] <- "Tempo"
+
+df_boxplot <- rbind(df_boxplot_long, df_boxplot_short)
+
+```
+
+
+
+```{r boxplot_stocks, results='hide'}
+
+# Plotting boxplot
+
+long_names <- c("sp1_long","sp2_long","sp3_long","sp4_long","sp5_long")
+short_names <- c("sp1_short","sp2_short","sp3_short","sp4_short","sp5_short")
+new_names <- c("Ação 1", "Ação 2", "Ação 3", "Ação 4", "Ação 5")
+
+df_boxplot$Var2 <- as.character(df_boxplot$Var2)
+for(i in 1:5) {
+    df_boxplot$Var2[df_boxplot$Var2 == short_names[i]] <- new_names[i]
+    df_boxplot$Var2[df_boxplot$Var2 == long_names[i]] <-  new_names[i]
+}
+
+
+ggplot(data = df_boxplot, aes(x=Var2, y=value)) + geom_boxplot(aes(fill=Tempo)) +  xlab("") + ylab("Variação da Ação (%)")
 
 ```
