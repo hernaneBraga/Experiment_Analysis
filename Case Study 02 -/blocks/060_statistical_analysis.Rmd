@@ -125,7 +125,13 @@ O procedimento de Benjamini-Hochberg indica que não é possível rejeitar a hip
 
 ```{r anova_tukeycp, results='hide'}
 
-library(multcomp)
+#library(multcomp)
+
+if (!require('multcomp', character.only = TRUE)) {
+      install.packages('multcomp', dependencies = TRUE)
+      library('multcomp', character.only = TRUE)
+}
+
 anovaDp$model$Xp = as.factor(Xp)
 mc1 <- glht(anovaDp, linfct = mcp(Xp = "Tukey"))
 mc1_a <- confint(mc1,level = 0.95)
