@@ -1,9 +1,16 @@
-## iid
+## Amostras independentes
 
+Pare este estudo todas as amostras são consideradas independentes entre si.
 
 
 ## Normalidade
-Para as ações de longo prazo, dos últimos 2 anos:
+O quadro abaixo demonstra o p-valor para o teste shapiro-wilk de normalidade para os cenários de:
+
+- Investimento no longo prazo (janela dos últimos 2 anos);
+- Investimento no curto prazo (janela dos últimos 6 meses);
+- Volatilidade das empresas;
+
+Como nenhum dos testes apontou um p-valor menor que $0.05$ considera-se todas as séries analisadas como normais. 
 
 ```{r test_normality}
 
@@ -37,7 +44,11 @@ print(round(norm_table, 3))
 
 
 ## Homocedasticidade
-Para as ações de curto prazo:
+
+Para garantir a premissa de homocedasticidade para os testes estatísticos, foi testada a igualdade de variância das séries de curto prazo e longo prazo a partir do teste de Fligner-Killeen.
+
+O resultado aponta igualdade de variância para ambos os cenários. O resíduo das médias pode ser visto nos dois gráficos abaixo.
+
 ```{r test1_variance_equality}
 
 Short_Homod= stack(list(Acao_1=sp1_long, Acao_2=sp2_long, 
@@ -49,8 +60,8 @@ resid <- tapply(X = Short_Homod$values, INDEX = Short_Homod$ind,
                 FUN = function(x){x - mean(x)})
 
 stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,
-           xlab = "mean",ylab = "residuals",
-           main = "Stripchart")
+           xlab = "média",ylab = "resíduos",
+           main = "Curto prazo")
 ```
 Para as ações de longo prazo:
 ```{r test2_variance_equality}
@@ -64,6 +75,6 @@ resid <- tapply(X = Long_Homod$values, INDEX = Long_Homod$ind,
                 FUN = function(x){x - mean(x)})
 
 stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,
-           xlab = "mean",ylab = "residuals",
-           main = "Stripchart")
+           xlab = "média",ylab = "resíduos",
+           main = "Longo prazo")
 ```
