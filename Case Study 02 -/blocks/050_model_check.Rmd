@@ -5,26 +5,65 @@
 ## Normalidade
 Para as ações de longo prazo, dos últimos 2 anos:
 
-```{r test1_norm_check}
+```{r test_normality}
 
 long_term_df <- cbind(sp1_long,sp2_long,sp3_long,sp4_long,sp5_long)
 short_term_df <- cbind(sp1_short,sp2_short,sp3_short,sp4_short,sp5_short)
+volatility_df <- cbind(sv1, sv2, sv3, sv4, sv5)
+
 
 result_long = rep(0,5)
 result_short = rep(0,5)
+result_volatility = rep(0,5)
+
 
 for(i in 1:5) {
     result_long[i] <- shapiro.test(long_term_df[,i])$p.value #OK
     result_short[i] <- shapiro.test(short_term_df[,i])$p.value #OK
+    result_volatility[i] <- shapiro.test(volatility_df[,i])$p.value #OK
   }
 
 
+norm_table <- rbind(result_long, result_short, result_volatility)
+new_names <- c("Ação 1", "Ação 2", "Ação 3", "Ação 4", "Ação 5")
+colnames(norm_table) <- new_names
+rownames(norm_table) <- c("Longo Prazo", "Curto Prazo", "Volatilidade")
+
+
+print(round(norm_table, 3))
+
 ```
-
-- Male students p-value = `r result_long[1]`  
-
 
 
 
 ## Homocedasticidade
+Para as ações de curto prazo:
+```{r test1_variance_equality}
 
+Short_Homod= stack(list(Acao_1=sp1_long, Acao_2=sp2_long, 
+                 Acao_3=sp3_long, Acao_4=sp4_long, Acao_5=sp5_long))
+
+fligner.test(values~ind,Short_Homod)
+
+resid <- tapply(X = Short_Homod$values, INDEX = Short_Homod$ind,
+                FUN = function(x){x - mean(x)})
+
+stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,
+           xlab = "mean",ylab = "residuals",
+           main = "Stripchart")
+```
+Para as ações de longo prazo:
+```{r test2_variance_equality}
+
+Long_Homod= stack(list(Acao_1=sp1_short, Acao_2=sp2_short, 
+                 Acao_3=sp3_short, Acao_4=sp4_short, Acao_5=sp5_short))
+
+fligner.test(values~ind,Long_Homod)
+
+resid <- tapply(X = Long_Homod$values, INDEX = Long_Homod$ind,
+                FUN = function(x){x - mean(x)})
+
+stripchart(x = resid,vertical = TRUE,pch = 16,cex = 1.5,las = 1,
+           xlab = "mean",ylab = "residuals",
+           main = "Stripchart")
+```
