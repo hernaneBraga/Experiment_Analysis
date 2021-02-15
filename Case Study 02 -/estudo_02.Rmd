@@ -6,15 +6,13 @@ author:
   - Vinicius Ferreira, Verification
 date: "Fevereiro 15, 2021"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     fig_caption: yes
 ---
 
 # Sumário
 ```{r, child=c('blocks/01_summary.Rmd')}
-
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 ```
 
 

@@ -7,7 +7,7 @@ A ordem dos dados foi invertida, onde os valores antigos estão no início da s�
 
 Para realização dos experimentos foi calculado o percentual de variação mensal usando a fórmula:
 
-$\Delta_m = \frac{V_m - V_{m-1}}{V_{m-1}}$
+$$\Delta_m = \frac{V_m - V_{m-1}}{V_{m-1}}$$
 
 Onde $V_m$ é o valor da ação no mês atual e $V_{m-1}$ o valor da ação no mês anterior.
 
@@ -83,7 +83,7 @@ sp5_short <- sp5[(total_months-5):total_months]
 
 Por fim, utiliza-se o indicador de volatividade para criar uma outra série de dados
 
-```{r volatility_indicator, results='hide'}
+```{r volatility_indicator, results='hide', message=FALSE}
 # Assign volatility indicator for each series
 if (!require('TTR', character.only = TRUE)) {
       install.packages('TTR', dependencies = TRUE)
