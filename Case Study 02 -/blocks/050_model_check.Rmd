@@ -1,6 +1,6 @@
 ## Amostras independentes
 
-Pare este estudo todas as amostras são consideradas independentes entre si.
+Pare este estudo todas as amostras são consideradas independentes entre si pois assume-se que cada empresa é uma organização distinta.
 
 
 ## Normalidade
