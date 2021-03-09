@@ -1,9 +1,9 @@
 ---
 title: 'Estudo de caso 02: escolha de qual a melhor ação para se investir todo o seu dinheiro'
 author:
-  - Hernane Braga, Data Treatment
-  - Lucas Carneiro, Data Analysis
-  - Vinicius Ferreira, Verification
+  - Hernane Braga, Tratamento
+  - Lucas Carneiro, Análise
+  - Vinicius Ferreira, Verificação
 date: "Fevereiro 15, 2021"
 output:
   pdf_document:
