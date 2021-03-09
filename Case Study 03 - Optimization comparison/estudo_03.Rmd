@@ -1,0 +1,56 @@
+---
+title: 'Estudo de caso 03: Comparação de desempenho de duas configurações de um algoritmo de otimização'
+author:
+  - Lucas Carneiro
+  - Vinicius Ferreira
+date: "Fevereiro 15, 2021"
+output:
+  pdf_document:
+    fig_caption: yes
+---
+
+<!-- # Sumário -->
+<!-- ```{r, child=c('blocks/010_summary.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- # Desenho de experimentos -->
+<!-- ```{r, child=c('blocks/020_experiment_design.Rmd')} -->
+
+<!-- ``` -->
+
+<!-- # Descrição de dados e tratamento  -->
+<!-- ```{r, child=c('blocks/030_data_treatment.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- # Análise exploratória de dados -->
+<!-- ```{r, child=c('blocks/040_exploratory_analysis.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- ```{r, child=c('blocks/041_exploratory_analysis.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- # Conferindo presunções dos modelos -->
+<!-- ```{r, child=c('blocks/050_model_check.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- # Análise estatística -->
+<!-- ```{r, child=c('blocks/060_statistical_analysis.Rmd')} -->
+
+<!-- ``` -->
+
+
+<!-- # Conclusão e recomendação -->
+<!-- ```{r, child=c('blocks/070_conclusion.Rmd')} -->
+
+<!-- ``` -->
+
