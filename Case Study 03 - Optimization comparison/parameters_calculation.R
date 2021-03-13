@@ -3,7 +3,8 @@ suppressPackageStartupMessages(library(ExpDE))
 
 size_groups = 3
 
-instances <- c(2,3,4,38,39,40,75,76,77,112,113,114,148,149,150)
+# instances <- c(2,3,4,38,39,40,75,76,77,112,113,114,148,149,150)
+instances <- c(2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,87,92,96,101,105,110,114,119,123,128,132,137,141,146,150)
 instances <- matrix(instances,nrow=size_groups)
 
 parameters.data = data.frame(
@@ -26,6 +27,7 @@ recpars2 <- list(name = "recombination_bin", cr = 0.7)
 mutpars2 <- list(name = "mutation_best", f = 3)
 
 group_count = 1
+group_num = 1
 inst_count = 1
 param_line = 1
 for (group in instances){
@@ -49,7 +51,7 @@ for (group in instances){
     
     # config_data = c()
     # config2_data = c()
-    print(paste("Instancia ", inst_count, "Dim ", dim))
+    print(paste("Grupo ", group_num,"Instancia ", inst_count, "Dim ", dim))
     for (i in c(1:rep)){
       print(paste("Config 1 Rep:", i))
       out <- ExpDE(mutpars = mutpars1,
@@ -60,7 +62,7 @@ for (group in instances){
                     probpars = probpars,
                     showpars = list(show.iters = "dots", showevery = 20))
       print(out$Fbest)
-      parameters.data[param_line,] <- list(group_count,inst_count,dim,1,i,out$Fbest)
+      parameters.data[param_line,] <- list(group_num,inst_count,dim,1,i,out$Fbest)
       param_line <- param_line+1
     }
     for (i in c(1:rep)){
@@ -73,12 +75,16 @@ for (group in instances){
                     probpars = probpars,
                     showpars = list(show.iters = "dots", showevery = 20))
       print(out$Fbest)
-      parameters.data[param_line,] <- list(group_count,inst_count,dim,2,i,out$Fbest)
+      parameters.data[param_line,] <- list(group_num,inst_count,dim,2,i,out$Fbest)
       param_line <- param_line+1
     }
     inst_count <- inst_count + 1
   }
   group_count <- group_count + 1
+  if(group_count>3){
+    group_count <- 1
+    group_num <- group_num + 1
+  }
 }
 
-write.csv2(parameters.data,".\\data\\param_data.csv", row.names = FALSE)
+write.csv2(parameters2.data,".\\data\\param2_data.csv", row.names = FALSE)
