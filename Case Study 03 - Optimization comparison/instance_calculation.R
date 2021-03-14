@@ -6,7 +6,7 @@ suppressPackageStartupMessages(library(ExpDE))
 # instances <- c(2,3,4,38,39,40,75,76,77,112,113,114,148,149,150)
 # instances <- c(2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,
 #                +87,92,96,101,105,110,114,119,123,128,132,137,141,146,150)
-instances <- c(2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,87,92,96,101)
+# instances <- c(2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,87,92,96,101)
 instances <- c(105,110,114,119,123,128,132,137,141,146,150)
 
 inst.data = data.frame(
@@ -27,7 +27,8 @@ mutpars1 <- list(name = "mutation_rand", f = 4)
 recpars2 <- list(name = "recombination_bin", cr = 0.7)
 mutpars2 <- list(name = "mutation_best", f = 3)
 
-inst_count = 1
+# inst_count = 1
+inst_count = 24
 param_line = 1
 for (dim in instances){
   fn <- function(X){
