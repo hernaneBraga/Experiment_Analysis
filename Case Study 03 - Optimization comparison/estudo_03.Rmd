@@ -23,34 +23,15 @@ output:
 
 ```
 
-# Descrição de dados e tratamento
+# Coleta e Tratamento de Dados
 ```{r, child=c('blocks/030_block_calculation.Rmd')}
 
 ```
 
-
-# Coleta e tabulação dos dados
-```{r, child=c('blocks/040_data_tabulation.Rmd')}
-
-```
-
-# Teste das hipóteses
+# Resultados e Discussão -- Teste das Hipóteses
 ```{r, child=c('blocks/050_hipothesis_test.Rmd')}
 
 ```
-
-
-# Estimação da magnitude da diferença entre os métodos
-```{r, child=c('blocks/060_diference_estimation.Rmd')}
-
-```
-
-
-# Verificação das premissas dos testes
-```{r, child=c('blocks/070_premisses.Rmd')}
-
-```
-
 
 # Conclusão e recomendação
 ```{r, child=c('blocks/080_conclusion.Rmd')}

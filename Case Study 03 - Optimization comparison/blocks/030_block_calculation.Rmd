@@ -23,3 +23,48 @@ Ncalc
 ```
 
 Portanto, serão utilizadas 34 instâncias para cada configuração. Para gerar um valor médio confiável em cada instância, serão realizadas 30 execuções para cada uma, este que é um valor "padrão" na literatura.
+
+As instâncias foram definidas ao amostrar o intervalo de dimensões $([2,150])$ para o problema de Rosenbrock uniformemente. Assim, o conjunto de dimensões escolhidas foi:
+
+$\{2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,87,\\
+92,96,101,105,110,114,119,123,128,132,137,141,146,150\}$. 
+
+Após o processo de coleta ser executado, os dados foram categorizados e extraiu-se deles a média das 30 repetições de cada configuração, esta apresentada abaixo.
+
+```{r data_mean}
+fulldata <- read.csv2("..\\data\\inst_data_complete.csv", sep=';', header = TRUE)
+aggdata <- with(fulldata, aggregate(x=resultado,
+                                    by=list(config,instancia),
+                                    FUN=mean))
+names(aggdata) <- c("Configuracao","Instancia","Resultado")
+for(i in 1:2) aggdata[,i] <- as.factor(aggdata[,i])
+levels(aggdata$Configuracao) <- c("Config1","Config2")
+summary(aggdata)
+```
+
+Depois de realizar a formatação dos dados, um gráfico da Média de Desempenho por Instância para cada Configuração é apresentado.
+```{r data1_plot}
+library(ggplot2)
+p <- ggplot(aggdata, aes(x = Instancia, 
+                         y = Resultado, 
+                         group = Configuracao, 
+                         colour = Configuracao))
+p + geom_line(linetype = 2) + geom_point(size=3)
+```
+
+Infere-se que as observações da Configuração 2 demonstram um aumento significativo de seus valores, enquanto a média dos resultados da Configuração 1 permanecem baixos. Dessa forma, há indicações que as médias não podem ser consideradas iguais.
+
+Por conta da ordem de grandeza dos valores aferidos, além de fatores que serão detalhados posteriormente, escolheu-se por realizar uma transformação logarítmica nos dados. Assim, um novo gráfico de Desempenho por Instancia é exibido em sequência.
+
+```{r}
+aggdata2<- aggdata
+aggdata2$Resultado[1] <- 0.0001 # Log de 0 dá -inf
+aggdata2$Resultado <- log(aggdata2$Resultado)
+p <- ggplot(aggdata2, aes(x = Instancia, 
+                         y = Resultado, 
+                         group = Configuracao, 
+                         colour = Configuracao))
+p + geom_line(linetype = 2) + geom_point(size=3)
+```
+
+No gráfico acima é possível observar com maior detalhamento que a Configuração 1 apresenta desempenho superior à Configuração 2 em cada um dos cenários (instâncias) avaliados. Contudo, para uma análise mais rigorosa, realiza-se o teste estatístico.

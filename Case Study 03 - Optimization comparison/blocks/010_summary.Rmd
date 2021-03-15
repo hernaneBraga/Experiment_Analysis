@@ -26,14 +26,11 @@ Este trabalho explora como duas diferentes configurações ([Tabela 1](#tabela1)
 | 2            | Melhores (f = 3)  | Binária (cr = 0.7) |
 
 
-As próximas etapas deste estudo de caso é apresentado a seguir:
+Este estudo é organizado como indicado a seguir:
 
 1. Formulação das hipóteses de teste;
-2. Cálculo dos tamanhos amostrais;
-3. Coleta e tabulação dos dados;
-4. Teste das hipóteses;
-5. Estimação da magnitude da diferença entre os métodos;
-6. Verificação das premissas dos testes;
-7. Conclusões
-8. Discussão sobre os processos do estudo
+2. Coleta e Tratamento de Dados;
+3. Resultados e Discussão -- Teste das hipóteses;
+4. Conclusões
+5. Discussão sobre os processos do estudo
 
