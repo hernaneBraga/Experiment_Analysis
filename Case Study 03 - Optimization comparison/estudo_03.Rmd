@@ -6,10 +6,10 @@ author:
 - Vinicius Ferreira - Coleta de dados
 date: "Março 15, 2021"
 output:
-  pdf_document:
-    fig_caption: yes
   html_document:
     df_print: paged
+  pdf_document:
+    fig_caption: yes
 ---
 
 # Sumário

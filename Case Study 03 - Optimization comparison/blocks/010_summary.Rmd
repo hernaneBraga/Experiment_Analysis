@@ -33,6 +33,5 @@ Este estudo é organizado como indicado a seguir:
 1. Formulação das hipóteses de teste;
 2. Coleta e Tratamento de Dados;
 3. Resultados e Discussão -- Teste das hipóteses;
-4. Conclusões
-5. Discussão sobre os processos do estudo
+4. Conclusões e Recomendações
 
