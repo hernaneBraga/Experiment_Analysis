@@ -1,0 +1,19 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+# Análise Anova 
+mdl1 <- aov(Resultado~Configuracao+Instancia, data = aggdata)
+aggdata$Resultado[1] <- 0.0001 # Log de 0 dá -inf
+mdl2 <- aov(log(Resultado)~Configuracao+Instancia, data = aggdata)
+summary(mdl1)
+summary(mdl2)
+
+par(mfrow = c(2, 2))
+plot(mdl1, pch = 20, las = 1)
+par(mfrow = c(2, 2))
+plot(mdl2, pch = 20, las = 1)
+```

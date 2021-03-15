@@ -9,27 +9,27 @@ output:
     fig_caption: yes
 ---
 
-<!-- # Sumário -->
-<!-- ```{r, child=c('blocks/010_summary.Rmd')} -->
+# Sumário
+```{r, child=c('blocks/010_summary.Rmd')}
 
-<!-- ``` -->
-
-
-<!-- # Desenho de experimentos -->
-<!-- ```{r, child=c('blocks/020_experiment_design.Rmd')} -->
-
-<!-- ``` -->
-
-<!-- # Descrição de dados e tratamento  -->
-<!-- ```{r, child=c('blocks/030_data_treatment.Rmd')} -->
-
-<!-- ``` -->
+```
 
 
-<!-- # Análise exploratória de dados -->
-<!-- ```{r, child=c('blocks/040_exploratory_analysis.Rmd')} -->
+# Formulação das hipóteses de teste
+```{r, child=c('blocks/020_hipothesis.Rmd')}
 
-<!-- ``` -->
+```
+
+# Descrição de dados e tratamento
+```{r, child=c('blocks/030_block_calculation.Rmd')}
+
+```
+
+
+# Coleta e tabulação dos dados
+```{r, child=c('blocks/040_data_tabulation.Rmd')}
+
+```
 
 
 <!-- ```{r, child=c('blocks/041_exploratory_analysis.Rmd')} -->

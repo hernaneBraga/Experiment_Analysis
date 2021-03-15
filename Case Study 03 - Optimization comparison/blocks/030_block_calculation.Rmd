@@ -1,0 +1,27 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Nesta seção, discute-se sobre qual a quantidade de instâncias e repetições utilizadas neste estudo. Para a avaliação das instâncias, utilizou-se a biblioteca CAISEr para estimar a quantidade de instâncias necessárias para cada configuração do algoritmo.
+
+```{r}
+if (!require('multcomp', character.only = TRUE)) {
+      install.packages('multcomp', dependencies = TRUE)
+      library('multcomp', character.only = TRUE)
+}
+
+if (!require('CAISEr', character.only = TRUE)) {
+      install.packages('CAISEr', dependencies = TRUE)
+      library('CAISEr', character.only = TRUE)
+}
+
+# Número de instancias
+Ncalc <- calc_instances(1,power = 0.8, d = 0.5, sig.level = 0.05, alternative = "two.sided", test = "t.test")
+Ncalc
+```
+
+Portanto, será utilizado 34 instâncias para cada configuração, o que resulta em 68 instâncias no total.
+
+Para gerar um valor médio confiável para cada instância, cada configuração será repetida 30 vezes, pois esta é uma quantidade considerável para se atingir tal média.

@@ -1,0 +1,15 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Como a proposta do estudo é de comparar como as modificações impactam nos resultados, utiliza-se o valor médio de . Portanto, a primeira hipótese é de comparar se os valores médios de cada uma das configurações são iguais, ou seja:
+
+$$
+\begin{cases} H_0: \overline{\mu_1} = \overline{\mu_2}\\H_1: \overline{\mu_i} \neq \overline{\mu_2}\end{cases}
+$$
+
+Na hipótese definida acima, $\mu_1$ e $\mu_2$ correspondem aos valores das médias das configurações 1 e 2, respectivamente.A hipótese será testada utilizando o método de blocagem RCBD, assumindo que terá uma replicação por bloco, independência dos blocos e independência em aleatorização dentro dos blocos.
+
+Para a hipóteses, utiliza-se um mínimo de importância prática de $0,5$, um índice de significância de $\alpha = 0,05$ e potência mínima desejada de $\beta = 0.8$.
