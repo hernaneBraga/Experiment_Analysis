@@ -31,26 +31,25 @@ output:
 
 ```
 
+# Teste das hipóteses
+```{r, child=c('blocks/050_hipothesis_test.Rmd')}
 
-<!-- ```{r, child=c('blocks/041_exploratory_analysis.Rmd')} -->
-
-<!-- ``` -->
-
-
-<!-- # Conferindo presunções dos modelos -->
-<!-- ```{r, child=c('blocks/050_model_check.Rmd')} -->
-
-<!-- ``` -->
+```
 
 
-<!-- # Análise estatística -->
-<!-- ```{r, child=c('blocks/060_statistical_analysis.Rmd')} -->
+# Estimação da magnitude da diferença entre os métodos
+```{r, child=c('blocks/060_diference_estimation.Rmd')}
 
-<!-- ``` -->
+```
 
 
-<!-- # Conclusão e recomendação -->
-<!-- ```{r, child=c('blocks/070_conclusion.Rmd')} -->
+# Verificação das premissas dos testes
+```{r, child=c('blocks/070_premisses.Rmd')}
 
-<!-- ``` -->
+```
 
+
+# Conclusão e recomendação
+```{r, child=c('blocks/080_conclusion.Rmd')}
+
+```
