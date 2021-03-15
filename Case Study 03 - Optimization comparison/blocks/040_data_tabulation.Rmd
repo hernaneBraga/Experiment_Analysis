@@ -4,7 +4,12 @@ output:
   html_document: default
 ---
 
-Após o processo de coleta ser executado, os dados foram categorizados e extraiu-se deles a média de 30 repetições de cada configuração, esta apresentada abaixo.
+As instâncias foram definidas ao amostrar o intervalo de dimensões $([2,150])$ para o problema de Rosenbrock uniformemente. Assim, o conjunto de dimensões escolhidas foi:
+
+$\{2,6,11,15,20,24,29,33,38,42,47,51,56,60,65,69,74,78,83,87,\\
+92,96,101,105,110,114,119,123,128,132,137,141,146,150\}$. 
+
+Após o processo de coleta ser executado, os dados foram categorizados e extraiu-se deles a média das 30 repetições de cada configuração, esta apresentada abaixo.
 
 ```{r}
 fulldata <- read.csv2("..\\data\\inst_data_complete.csv", sep=';', header = TRUE)
@@ -24,4 +29,4 @@ p <- ggplot(aggdata, aes(x = Instancia,
 p + geom_line(linetype = 2) + geom_point(size=3)
 ```
 
-Observa-se que as observações com relação à configuração 1 demonstram um aumento significativo de seus valores, enquanto a média dos resultados com a segunda configuração permanecem baixos, ou seja, ja há indicações que não podem ser consideradas os mesmos valores de médias.
+Infere-se que as observações da Configuração 1 demonstram um aumento significativo de seus valores, enquanto a média dos resultados da Configuração 2 permanecem baixos. Dessa forma, há indicações que as médias não podem ser consideradas iguais. Contudo, para uma análise mais detalhada, realiza-se o teste estatístico.

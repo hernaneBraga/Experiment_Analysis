@@ -1,10 +1,13 @@
 ---
-title: 'Estudo de caso 03: Comparação de desempenho de duas configurações de um algoritmo de otimização'
+title: 'Estudo de caso 03: Comparação de desempenho de duas configurações de um algoritmo
+  de otimização'
 author:
-  - Lucas Carneiro
-  - Vinicius Ferreira
+- Lucas Carneiro
+- Vinicius Ferreira
 date: "Fevereiro 15, 2021"
 output:
+  html_document:
+    df_print: paged
   pdf_document:
     fig_caption: yes
 ---

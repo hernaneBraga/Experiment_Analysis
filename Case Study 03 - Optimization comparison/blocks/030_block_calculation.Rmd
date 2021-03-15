@@ -22,6 +22,4 @@ Ncalc <- calc_instances(1,power = 0.8, d = 0.5, sig.level = 0.05, alternative = 
 Ncalc
 ```
 
-Portanto, será utilizado 34 instâncias para cada configuração, o que resulta em 68 instâncias no total.
-
-Para gerar um valor médio confiável para cada instância, cada configuração será repetida 30 vezes, pois esta é uma quantidade considerável para se atingir tal média.
+Portanto, serão utilizadas 34 instâncias para cada configuração. Para gerar um valor médio confiável em cada instância, serão realizadas 30 execuções para cada uma, este que é um valor "padrão" na literatura.
