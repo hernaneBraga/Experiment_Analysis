@@ -16,14 +16,16 @@ output:
 
 A fim de solucionar problemas de otimização, heurísticas são utilizadas a fim de encontrar uma solução viável em tempo hábil, dado que algoritmos para encontrar a solução ótima exata levariam anos para obter sucesso. Uma dessas heurísticas são algoritmos baseados em população, que utilizam um conjunto de soluções-candidatas e, com uma série de operações de variação e seleção nelas, exploram o espaço amostral do problema em busca do ótimo. Neste ensaio, utiliza-se o método de evolução diferencial.
 
-Este trabalho explora como duas diferentes configurações ([Tabela 1](#tabela1)) do método citado impactam no resultado, observando qual destas obtém melhor desempenho. Para testar as configurações, utiliza-se uma função de Rosenbrock, com o intervalo de dimensões de interesse de $[2,150]$.
+Este trabalho explora como duas diferentes configurações ([Table 1](#table1)) do método citado impactam no resultado, observando qual destas obtém melhor desempenho. Para testar as configurações, utiliza-se uma função de Rosenbrock, com o intervalo de dimensões de interesse de $[2,150]$.
 
-<a id="tabela1"></a>
 
 | Configuração | Mutação           | Recombinação       |
 |--------------|-------------------|--------------------|
 | 1            | Aleatória (f = 4) | Aritmética         |
 | 2            | Melhores (f = 3)  | Binária (cr = 0.7) |
+
+: Características das configurações
+
 
 
 Este estudo é organizado como indicado a seguir:
