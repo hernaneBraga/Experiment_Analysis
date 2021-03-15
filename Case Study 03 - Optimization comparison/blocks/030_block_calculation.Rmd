@@ -6,7 +6,7 @@ output:
 
 Nesta seção, discute-se sobre qual a quantidade de instâncias e repetições utilizadas neste estudo. Para a avaliação das instâncias, utilizou-se a biblioteca CAISEr para estimar a quantidade de instâncias necessárias para cada configuração do algoritmo.
 
-```{r}
+```{r block_calculation, message=FALSE}
 if (!require('multcomp', character.only = TRUE)) {
       install.packages('multcomp', dependencies = TRUE)
       library('multcomp', character.only = TRUE)
