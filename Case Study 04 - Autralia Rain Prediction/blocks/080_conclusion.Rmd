@@ -1,0 +1,11 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Com a realização do estudo verificou-se que as configurações do algoritmo estudadas apresentaram diferenças no desempenho médio. Além disso, não esperava-se que esta diferença fosse tão significativa, como foi apresentado nos gráficos e confirmado durante as comparações. Portanto, em um trabalho futuro, vale a pena estudar quais possíveis configurações podem ser utilizadas para garantir um melhor resultado nesta classe de problema.
+
+Com relação ao design do experimento, a utilização do pacote CAISEr permitiu extrair as informação de planejamento do estudo com melhor exatidão e menor custo de tempo. Devido ao grande número de dimensões escolhidas, recomenda-se paralelizar o processo de coleta de dados por que, quanto maior foi a dimensão do problema, mais tempo levou para obter os resultados. 
+
+O experimento resultou em duas principais contribuições. A primeira diz respeito ao aprendizado das técnicas de blocagem, isto é, como realizar comparações quando há fatores externos, neste caso as diferentes dimensões para o problema de otimização. Já a segunda permitiu avaliar como as duas configurações de um mesmo algoritmo se comportam e como é importante avaliar as opções de heurísticas baseadas em população.

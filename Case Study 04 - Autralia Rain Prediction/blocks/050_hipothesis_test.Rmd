@@ -1,0 +1,54 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+O teste ANOVA para os dados obtidos e os gráficos dos resíduos são apresentados a seguir:
+
+```{r anova1}
+# Análise Anova 
+mdl1 <- aov(Resultado~Configuracao+Instancia, data = aggdata)
+summary(mdl1)
+summary.lm(mdl1)$r.squared
+
+par(mfrow = c(2, 2))
+plot(mdl1, pch = 20, las = 1)
+```
+
+Verifica-se que o teste rejeita a hipótese nula e, portanto, existe diferença entre os desempenhos. Contudo, é possível observar que o modelo gerado não apresenta um bom valor de coeficiente de determinação $(R^2)$. A comparação de Dunnet entre as configurações, com intervalo de confiância de $95\%$, é apresentada a seguir. 
+
+```{r comp1} 
+# Comparação Múltipla 1
+dtest1 <- glht(mdl1, linfct = mcp(Configuracao = "Dunnet"))
+dtestIC1 <- confint(dtest1,level = 0.95)
+par(mar = c(5, 8, 4, 2), las = 1)
+plot(dtestIC1,xlim = c(-10^7,10^7),xlab = "Diferença das Médias")
+
+```
+
+Aqui, infere-se que há diferença entre o desempenho dos algoritmos. Além disso, a Configuração 2 apresenta desempenho médio inferior (maior valor de custo) à Configuração 1 para o problema em estudo. A magnitude das diferenças observadas é da ordem de $10^6$ em termos de função custo.
+
+Para contornar o baixo coeficiente de determinação do modelo anterior, os dados foram transformados para uma escala logarítima. Assim, é possível observar com maior detalhe as diferenças entre as configurações.
+
+```{r anova2}
+# Análise Anova log
+mdl2 <- aov(Resultado~Configuracao+Instancia, data = aggdata2)
+summary(mdl2)
+summary.lm(mdl2)$r.squared
+par(mfrow = c(2, 2))
+plot(mdl2, pch = 20, las = 1)
+```
+
+O modelo obtido apresenta bom coeeficiente de determinação. Apesar disto, o teste estatístico rejeita a hipótese nula ao nível de significância de $0.05$. Desta forma, reafirma que existe diferença entre o desempenho médio das configurações do algoritmo de otimização. O gráfico da comparação de Dunnet, com intervalo de confiânça de $95\%$, é exibido em sequência.
+
+```{r comp2} 
+# Comparação Múltipla 2
+
+dtest2 <- glht(mdl2, linfct = mcp(Configuracao = "Dunnet"))
+dtestIC2 <- confint(dtest2,level = 0.95)
+par(mar = c(5, 8, 4, 2), las = 1)
+plot(dtestIC2,xlim = c(-10,10),xlab = "Diferença das Médias (Escala Logarítmica)")
+```
+
+No gráfico da diferença é possível verificar que a Configuração 1 apresenta desempenho superior para a classe de problemas em estudo. Além disso, comprova-se que a diferença de magnitude das respostas médias é da ordem de $10^6$.

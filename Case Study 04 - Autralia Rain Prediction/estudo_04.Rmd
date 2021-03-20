@@ -1,0 +1,39 @@
+---
+title: 'Estudo de caso 03: Comparação de desempenho de duas configurações de um algoritmo
+  de otimização'
+author:
+- Lucas Carneiro - Análises
+- Vinicius Ferreira - Coleta de dados
+date: "Março 15, 2021"
+output:
+  pdf_document:
+    fig_caption: yes
+  html_document:
+    df_print: paged
+---
+
+# Sumário
+```{r, child=c('blocks/010_summary.Rmd')}
+
+```
+
+
+# Formulação das hipóteses de teste
+```{r, child=c('blocks/020_hipothesis.Rmd')}
+
+```
+
+# Coleta e Tratamento de Dados
+```{r, child=c('blocks/030_block_calculation.Rmd')}
+
+```
+
+# Resultados e Discussão -- Teste das Hipóteses
+```{r, child=c('blocks/050_hipothesis_test.Rmd')}
+
+```
+
+# Conclusão e recomendação
+```{r, child=c('blocks/080_conclusion.Rmd')}
+
+```
