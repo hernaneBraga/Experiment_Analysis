@@ -17,14 +17,13 @@ output:
 
 ```
 
-
-# Formulação das hipóteses de teste
-```{r, child=c('blocks/020_hipothesis.Rmd')}
+# Coleta e Tratamento de Dados
+```{r, child=c('blocks/020_data_treatment.Rmd')}
 
 ```
 
-# Coleta e Tratamento de Dados
-```{r, child=c('blocks/030_block_calculation.Rmd')}
+# Formulação das hipóteses de teste
+```{r, child=c('blocks/030_hipothesis.Rmd')}
 
 ```
 

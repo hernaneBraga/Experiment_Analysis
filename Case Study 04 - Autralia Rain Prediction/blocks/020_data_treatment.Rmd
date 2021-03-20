@@ -23,3 +23,13 @@ As correlações indicam que... blablabla
 
 Antes de realizar o treinamento dos modelos, aplicou-se uma normalização mínimo-máximo nas variáveis independentes (variáveis de entrada) para que a magnitude dos seus valores não impactem negativamente na convergência dos algoritmos e para que as variáveis tenham igual influência no treinamento.
 
+```{r correlation_calc, message=FALSE}
+
+normalize <- function(x)
+{
+    return((x- min(x)) /(max(x)-min(x)))
+}
+
+normalize(DADOS)
+
+```
