@@ -29,11 +29,11 @@ output:
 ```
 
 # Resultados e Discussão -- Teste das Hipóteses
-```{r, child=c('blocks/050_hipothesis_test.Rmd')}
+```{r, child=c('blocks/040_hipothesis_test.Rmd')}
 
 ```
 
 # Conclusão e recomendação
-```{r, child=c('blocks/080_conclusion.Rmd')}
+```{r, child=c('blocks/050_conclusion.Rmd')}
 
 ```
