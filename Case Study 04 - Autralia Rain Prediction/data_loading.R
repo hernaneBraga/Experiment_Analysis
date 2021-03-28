@@ -26,7 +26,7 @@ for (location in unique(weatherAUS_noNA_dates$Location)) {
 years <- list()
 for (yearD in unique(weatherAUS_noNA_dates$Year)) {
   years <- rbind(years,c(years,sum(weatherAUS_noNA_dates[,24]==yearD)))
-  # print(paste(yearD,sum(weatherAUS_noNA_dates[,24]==yearD)))
+  print(paste(yearD,sum(weatherAUS_noNA_dates[,24]==yearD)))
 }
 
 loc_year <- list()
