@@ -16,5 +16,5 @@ for (location in unique(train_weatherAUS$Location)) {
   # print(paste(location,sum(test_weatherAUS[,2]==location)))
 }
 
-# write.csv2(train_weatherAUS,".\\data\\train.csv", row.names = FALSE, sep = ";", dec = ".")
-# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")
+write.csv(train_weatherAUS,".\\data\\train.csv", row.names = FALSE, sep = ";", dec = ".")
+write.csv(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")write.csv(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")
