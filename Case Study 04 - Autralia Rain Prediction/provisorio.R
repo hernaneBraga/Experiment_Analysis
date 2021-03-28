@@ -31,7 +31,9 @@ svmrbf <- train(X_train, Y_train, method = 'lssvmRadial',
                       preProcess = 'scale',trControl = trainControl(method = "cv", number = 5))
 print(svmrbf)
 
-
+fuzzy <- train(X_train, Y_train, method = 'FRBCS.CHI', 
+                preProcess = 'scale',trControl = trainControl(method = "cv", number = 5))
+print(fuzzy)
 
 # Erro dos modelos
 yhat <- predict.train(svm, newdata = X_test)
