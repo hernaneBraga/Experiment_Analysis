@@ -2,6 +2,8 @@ train_weatherAUS <- weatherAUS_noNA_dates[weatherAUS_noNA_dates$Year%in%c(2009,2
 train_weatherAUS <- train_weatherAUS[train_weatherAUS$Location!="Hobart",]
 train_weatherAUS <- train_weatherAUS[train_weatherAUS$Location!="Cobar",]
 
+train_weatherAUS <- train_weatherAUS[,2:23]
+
 train_locations <- list()
 for (location in unique(train_weatherAUS$Location)) {
   train_locations <- rbind(train_locations,c(location,sum(train_weatherAUS[,2]==location)))
@@ -9,6 +11,7 @@ for (location in unique(train_weatherAUS$Location)) {
 }
 
 test_weatherAUS <- weatherAUS_noNA_dates[weatherAUS_noNA_dates$Year%in%c(2012),]
+test_weatherAUS <- test_weatherAUS[,2:23]
 
 test_locations <- list()
 for (location in unique(train_weatherAUS$Location)) {
@@ -16,5 +19,5 @@ for (location in unique(train_weatherAUS$Location)) {
   # print(paste(location,sum(test_weatherAUS[,2]==location)))
 }
 
-write.csv(train_weatherAUS,".\\data\\train.csv", row.names = FALSE, sep = ";", dec = ".")
-write.csv(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")write.csv(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")# write.csv2(test_weatherAUS,".\\data\\test.csv", row.names = FALSE, sep = ";", dec = ".")
+write.csv(train_weatherAUS,".\\data\\train.csv", row.names = FALSE)
+write.csv(test_weatherAUS,".\\data\\test.csv", row.names = FALSE)
