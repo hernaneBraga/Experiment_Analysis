@@ -3,7 +3,7 @@ library(multcomp)
 library(ggplot2)
 
 ## Potência
-Ncalc <- calc_instances(3,d = 0.5, ninstances = 23,power = NULL,  sig.level = 0.05, alternative = "two.sided", test = "t.test")
+Ncalc <- calc_instances(3,d = 0.7, ninstances = 23,power = NULL,  sig.level = 0.05, alternative = "two.sided", test = "t.test")
 
 fulldata <- read.csv("data/inst_3modelos.csv",sep =';',dec = ',', header = TRUE)
 
@@ -14,6 +14,30 @@ aggdata <- with(fulldata, aggregate(x=cbind(acuracia,sensibilidade,especificidad
 for(i in 1:2) aggdata[,i] <- as.factor(aggdata[,i])
 names(aggdata) <- c("Modelo","Localidade","Acuracia","Sensibilidade","Especificidade")
 summary(aggdata)
+
+## Teste de Normalidade
+
+# Acurácia
+shapiro.test(aggdata$Acuracia[aggdata$Modelo == 'MLP'])
+shapiro.test(aggdata$Acuracia[aggdata$Modelo == 'SVM'])
+shapiro.test(aggdata$Acuracia[aggdata$Modelo == 'RandomForest'])
+
+# Sensibilidade
+shapiro.test(aggdata$Sensibilidade[aggdata$Modelo == 'MLP'])
+shapiro.test(aggdata$Sensibilidade[aggdata$Modelo == 'SVM'])
+shapiro.test(aggdata$Sensibilidade[aggdata$Modelo == 'RandomForest'])
+
+# Especificidade
+shapiro.test(aggdata$Especificidade[aggdata$Modelo == 'MLP'])
+shapiro.test(aggdata$Especificidade[aggdata$Modelo == 'SVM'])
+shapiro.test(aggdata$Especificidade[aggdata$Modelo == 'RandomForest'])
+
+## Teste de Homocedasticidade
+
+fligner.test(Acuracia~Modelo,aggdata)
+fligner.test(Sensibilidade~Modelo,aggdata[aggdata$Modelo != 'MLP',])
+fligner.test(Especificidade~Modelo,aggdata[aggdata$Modelo != 'MLP',])
+
 
 ## Análise Anova 
 
@@ -44,7 +68,7 @@ dtestIC_ssb <- confint(dtest_ssb,level = 0.95)
 
 # Especificidade
 dtest_spc <- glht(mdl_spc, linfct = mcp(Modelo = "Tukey"))
-dtestIC_spc <- confint(dtest_spc,level = 0.95)
+dtestIC_spc <- confint(dtest_spc,level = 0.96)
 
 
 ## Plots
