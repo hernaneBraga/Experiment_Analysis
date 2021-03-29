@@ -6,8 +6,8 @@ fulldata <- read.csv2("teste.csv", sep=',',dec = ".", header = FALSE)
 X <- as.matrix(fulldata[,1:4])
 Y <- as.factor(fulldata[,5])
 
-#idx <- createDataPartition(Y,p = 0.7,  list = FALSE)
-idx <- createTimeSlices(Y, 100, horizon = 100, fixedWindow = TRUE, skip = 0)
+idx <- createDataPartition(Y,p = 0.7,  list = FALSE)
+#idx <- createTimeSlices(Y, 100, horizon = 100, fixedWindow = TRUE, skip = 0)
 
 X_train <- as.matrix(fulldata[idx,1:4])
 Y_train <- as.factor(fulldata[idx,5])
@@ -36,16 +36,18 @@ svmrbf <- train(X_train, Y_train, method = 'lssvmRadial',
                       preProcess = 'scale',trControl = trainControl(method = "cv", number = 5))
 print(svmrbf)
 
+# Fuzzy Inference System
 fuzzy <- train(X_train, Y_train, method = 'FRBCS.CHI', 
                 preProcess = 'scale',trControl = trainControl(method = "cv", number = 5))
 print(fuzzy)
 
 # Erro dos modelos
-models <- list(randomf, mlperceptron, svmrbf, fuzzy)
-yhat <- predict.train(models[[1]], newdata = X_test)
-e <- mean(as.numeric(yhat) == as.numeric(Y_test))
+# models <- list(randomf, mlperceptron, svmrbf, fuzzy)
+# yhat <- predict.train(randomf, newdata = X_test)
+# e <- mean(as.numeric(yhat) == as.numeric(Y_test))
 
-# yhat <- predict(mlperceptron,X_test)
-# e <- postResample(pred = yhat, obs = Y_test)
-# e <- e[1];
-
+yhat <- predict(mlperceptron,X_test)
+cm <- confusionMatrix(data = yhat, reference = Y_test)
+acc <- cm$overall['Accuracy']
+sst <- cm$byClass['Sensitivity']
+spc <- cm$byClass['Specificity']
