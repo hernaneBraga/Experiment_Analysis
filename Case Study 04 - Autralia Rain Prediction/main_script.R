@@ -3,6 +3,13 @@ library(caret)
 fulldata <- read.csv("data/train.csv", header = TRUE)
 fulldata_test <- read.csv("data/test.csv", header = TRUE)
 
+## Necessário Remover Sydney
+
+loc <- unique(fulldata$Location)
+loc <- loc[!(loc == loc[4])]
+
+##
+
 
 a <- 1
 rep <- 30
@@ -17,10 +24,10 @@ inst <- data.frame(
 )
 inst_line <- 1
 
-for(i in unique(fulldata$Location)){
+for(i in loc){
   
-  localdata <- fulldata[fulldata$Location == i]
-  localdata_test <- fulldata_test[fulldata_test$Location == i]
+  localdata <- fulldata[fulldata$Location == i,]
+  localdata_test <- fulldata_test[fulldata_test$Location == i,]
   
   X_train <- localdata[,2:21]
   Y_train <- as.factor(localdata[,22])
@@ -35,8 +42,8 @@ for(i in unique(fulldata$Location)){
     # Modelo Random Forest
     randomf <- train(X_train, Y_train, method = 'ranger',
                      preProcess = 'scale',
-                     trControl = trainControl(method = "timeslice",initialWindow = 150,
-                                              horizon = 150, fixedWindow = TRUE, skip = 0))
+                     trControl = trainControl(method = "none"),
+                     tuneGrid = data.frame(mtry = 11,splitrule = 'extratrees', min.node.size = 1))
     yhat <- predict(randomf,X_test)
     cm <- confusionMatrix(data = yhat, reference = Y_test)
     acc <- cm$overall['Accuracy']
@@ -54,11 +61,10 @@ for(i in unique(fulldata$Location)){
     
     # Multi Layer Perceptron
     mlperceptron <- train(X_train, Y_train, method = 'mlp', 
-                          preProcess = 'scale',trControl = trainControl(method = "timeslice",
-                                                                        initialWindow = 150,
-                                                                        horizon = 150,
-                                                                        fixedWindow = TRUE,
-                                                                        skip = 0))
+                          preProcess = 'scale',
+                          trControl = trainControl(method = "none"),
+                          tuneGrid = data.frame(size = 5))
+    
     yhat <- predict(mlperceptron,X_test)
     cm <- confusionMatrix(data = yhat, reference = Y_test)
     acc <- cm$overall['Accuracy']
@@ -76,11 +82,10 @@ for(i in unique(fulldata$Location)){
     
     # SVM Kernel Polinomial
     svmrbf <- train(X_train, Y_train, method = 'lssvmRadial',
-                          preProcess = 'scale',trControl = trainControl(method = "timeslice",
-                                                                        initialWindow = 150,
-                                                                        horizon = 150,
-                                                                        fixedWindow = TRUE,
-                                                                        skip = 0))
+                    preProcess = 'scale',
+                    trControl = trainControl(method = "none"),
+                    tuneGrid = data.frame(sigma = 0.01443098, tau = 0.25))
+    
     yhat <- predict(svmrbf,X_test)
     cm <- confusionMatrix(data = yhat, reference = Y_test)
     acc <- cm$overall['Accuracy']
@@ -99,17 +104,17 @@ for(i in unique(fulldata$Location)){
     # Fuzzy Inference System
     fuzzy <- train(X_train, Y_train, method = 'FRBCS.CHI',
                     preProcess = 'scale',trControl = trainControl(method = "timeslice",
-                                                                  initialWindow = 150,
-                                                                  horizon = 150,
+                                                                  initialWindow = 500,
+                                                                  horizon = 500,
                                                                   fixedWindow = TRUE,
-                                                                  skip = 0))
+                                                                  skip = 200))
     yhat <- predict(fuzzy,X_test)
     cm <- confusionMatrix(data = yhat, reference = Y_test)
     acc <- cm$overall['Accuracy']
     sst <- cm$byClass['Sensitivity']
     spc <- cm$byClass['Specificity']
     
-    inst[inst_line,] <- list(a,i,'SVM',j,acc,sst,spc)
+    inst[inst_line,] <- list(a,i,'Fuzzy',j,acc,sst,spc)
     inst_line <- inst_line + 1
     
   }

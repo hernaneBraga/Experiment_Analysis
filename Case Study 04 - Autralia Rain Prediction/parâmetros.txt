@@ -1,0 +1,66 @@
+Random Forest 
+
+21679 samples
+   20 predictor
+    2 classes: '0', '1' 
+
+Pre-processing: scaled (20) 
+Resampling: Rolling Forecasting Origin Resampling (1000 held-out with a fixed window) 
+Summary of sample sizes: 1000, 1000, 1000, 1000, 1000, 1000, ... 
+Resampling results across tuning parameters:
+
+  mtry  splitrule   Accuracy  Kappa    
+   2    gini        0.84665   0.4986592
+   2    extratrees  0.83895   0.4437657
+  11    gini        0.84180   0.5066531
+  11    extratrees  0.84750   0.5029458
+  20    gini        0.83880   0.5030150
+  20    extratrees  0.84660   0.5049099
+
+Tuning parameter 'min.node.size' was held constant at a value of 1
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were mtry = 11, splitrule = extratrees and min.node.size = 1.
+
+Multi-Layer Perceptron 
+
+21679 samples
+   20 predictor
+    2 classes: '0', '1' 
+
+Pre-processing: scaled (20) 
+Resampling: Rolling Forecasting Origin Resampling (1000 held-out with a fixed window) 
+Summary of sample sizes: 1000, 1000, 1000, 1000, 1000, 1000, ... 
+Resampling results across tuning parameters:
+
+  size  Accuracy  Kappa
+  1     0.7768    0    
+  3     0.7768    0    
+  5     0.7768    0    
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was size = 1.
+
+Least Squares Support Vector Machine with Radial Basis Function Kernel 
+
+21679 samples
+   20 predictor
+    2 classes: '0', '1' 
+
+Pre-processing: scaled (20) 
+Resampling: Rolling Forecasting Origin Resampling (1000 held-out with a fixed window) 
+Summary of sample sizes: 1000, 1000, 1000, 1000, 1000, 1000, ... 
+Resampling results across tuning parameters:
+
+  sigma       tau     Accuracy  Kappa    
+  0.01443098  0.0625  0.84075   0.4729516
+  0.01443098  0.1250  0.84095   0.4728919
+  0.01443098  0.2500  0.84205   0.4761722
+  0.03841026  0.0625  0.83360   0.4488576
+  0.03841026  0.1250  0.83350   0.4484842
+  0.03841026  0.2500  0.83385   0.4480220
+  0.06238954  0.0625  0.82560   0.3951851
+  0.06238954  0.1250  0.82555   0.3950071
+  0.06238954  0.2500  0.82480   0.3908008
+
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were sigma = 0.01443098 and tau = 0.25.
