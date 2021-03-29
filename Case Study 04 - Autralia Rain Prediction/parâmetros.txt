@@ -64,3 +64,28 @@ Resampling results across tuning parameters:
 
 Accuracy was used to select the optimal model using the largest value.
 The final values used for the model were sigma = 0.01443098 and tau = 0.25.
+
+Fuzzy Rules Using Chi's Method 
+
+21679 samples
+   20 predictor
+    2 classes: '0', '1' 
+
+Pre-processing: scaled (20) 
+Resampling: Rolling Forecasting Origin Resampling (1000 held-out with a fixed window) 
+Summary of sample sizes: 1000, 1000, 1000, 1000, 1000, 1000, ... 
+Resampling results across tuning parameters:
+
+  num.labels  type.mf    Accuracy  Kappa     
+  3           GAUSSIAN   0.75585   0.27483383
+  3           TRAPEZOID  0.70520   0.15291633
+  3           TRIANGLE   0.74650   0.26229036
+  5           GAUSSIAN   0.77715   0.31811325
+  5           TRAPEZOID  0.67060   0.08798713
+  5           TRIANGLE   0.74970   0.18440590
+  7           GAUSSIAN   0.78245   0.33746002
+  7           TRAPEZOID  0.66430   0.03389185
+  7           TRIANGLE   0.70555   0.06062350
+
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were num.labels = 7 and type.mf = GAUSSIAN.

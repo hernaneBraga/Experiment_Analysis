@@ -103,11 +103,10 @@ for(i in loc){
     
     # Fuzzy Inference System
     fuzzy <- train(X_train, Y_train, method = 'FRBCS.CHI',
-                    preProcess = 'scale',trControl = trainControl(method = "timeslice",
-                                                                  initialWindow = 500,
-                                                                  horizon = 500,
-                                                                  fixedWindow = TRUE,
-                                                                  skip = 200))
+                   preProcess = 'scale',
+                   trControl = trainControl(method = "none"),
+                   tuneGrid = data.frame(num.labels = 7,type.mf = 'GAUSSIAN'))
+    
     yhat <- predict(fuzzy,X_test)
     cm <- confusionMatrix(data = yhat, reference = Y_test)
     acc <- cm$overall['Accuracy']
